@@ -41,20 +41,20 @@ namespace PostGSQL
             SqlCommand loginProc = new SqlCommand("userLogin", conn);
             loginProc.CommandType = CommandType.StoredProcedure;
 
-            loginProc.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = id;
+            loginProc.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = id.Value;
             loginProc.Parameters.Add(new SqlParameter("@password", SqlDbType.VarChar)).Value = pass;
 
-            SqlParameter sucess = loginProc.Parameters.Add("@success", SqlDbType.Bit);
+            SqlParameter sucess = loginProc.Parameters.Add("@successBit", SqlDbType.Bit);
             sucess.Direction = System.Data.ParameterDirection.Output;
 
             conn.Open();
-           loginProc.ExecuteNonQuery();
-           conn.Close();
-            if (sucess.Value.ToString() == "1")
+            loginProc.ExecuteNonQuery();
+            conn.Close();
+            if (sucess.Value.ToString() == "True")
             {
-                Session["user"] = id;
+//                Session["user"] = id;
                 Response.Write("Omar Teezo 7amra");
-                Response.Redirect("loginPage.aspx");
+//                Response.Redirect("loginPage.aspx");
             }
         }
     }
