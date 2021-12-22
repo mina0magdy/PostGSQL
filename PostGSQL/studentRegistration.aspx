@@ -21,8 +21,18 @@
             <asp:TextBox ID="lastName" runat="server"></asp:TextBox>
         </p>
         <p>
-            GUCian (If GUCian: type &#39;1&#39;, If NonGUCian: type &#39;0&#39;):
-            <asp:TextBox ID="gucian" runat="server"></asp:TextBox>
+            GUCian:
+            <asp:RadioButtonList ID="gucselect" runat="server">
+                <asp:ListItem Value="1">Yes</asp:ListItem>
+                <asp:ListItem Value="0">No</asp:ListItem>
+            </asp:RadioButtonList>
+        </p>
+        <p>
+            Degree:
+            <asp:RadioButtonList ID="type" runat="server">
+                <asp:ListItem Text="Masters"></asp:ListItem>
+                <asp:ListItem Text="PHD"></asp:ListItem>
+            </asp:RadioButtonList>
         </p>
         <p>
             Email:

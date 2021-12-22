@@ -42,13 +42,22 @@ namespace PostGSQL
         protected global::System.Web.UI.WebControls.TextBox lastName;
 
         /// <summary>
-        /// gucian control.
+        /// gucselect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gucian;
+        protected global::System.Web.UI.WebControls.RadioButtonList gucselect;
+
+        /// <summary>
+        /// type control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList type;
 
         /// <summary>
         /// email control.
