@@ -32,6 +32,10 @@
             Faculty:
             <asp:TextBox ID="faculty" runat="server"></asp:TextBox>
         </p>
+        <p>
+            Address:
+            <asp:TextBox ID="address" runat="server" style="margin-bottom: 0px"></asp:TextBox>
+        </p>
 
         <asp:Button ID="register" runat="server" OnClick="Register" Text="Register" />
 
