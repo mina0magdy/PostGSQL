@@ -8,24 +8,36 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
         <p>
             Examiner Registration
         </p>
         <p>
-            Name:
-            <asp:TextBox ID="name" runat="server"></asp:TextBox>
+            Name:</p>
+        <p>
+            &nbsp;<asp:TextBox ID="name" runat="server" required="true" placeholder="enter your name"></asp:TextBox>
         </p>
         <p>
-        National (If yes: type &#39;1&#39;, If no: type &#39;0&#39;): 
-        <asp:TextBox ID="national" runat="server"></asp:TextBox>
+            Email:</p>
+        <p>
+            <asp:TextBox ID="Email" runat="server" required="true" type="email" placeholder="Example@something"></asp:TextBox>
         </p>
         <p>
-        Field of Work: 
-        <asp:TextBox ID="fieldOfWork" runat="server"></asp:TextBox>
+            Password:</p>
+        <p>
+            <asp:TextBox ID="Password" runat="server" required="true" type="password" placeholder="enter your password"></asp:TextBox>
+            <asp:RadioButtonList ID="National" runat="server" Height="59px" required="true">
+                <asp:ListItem value="1" Selected="true">National</asp:ListItem>
+                <asp:ListItem Value="0">NotNational</asp:ListItem>
+            </asp:RadioButtonList>
         </p>
+        <p>
+        Field of Work:</p>
+        <p>
+        &nbsp;<asp:TextBox ID="fieldOfWork" runat="server" required="true" placeholder="enter your field of work"></asp:TextBox>
+        </p>
+        <p>
         <asp:Button ID="register" runat="server" Text="Register" OnClick="Register" />
+        </p>
     </form>
     </body>
 </html>
