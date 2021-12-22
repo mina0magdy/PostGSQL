@@ -7,19 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace PostGSQL
 {
-    public partial class loggedSupervisor : System.Web.UI.Page
+    public partial class supervisorProfile : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void listPublications(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void cancelThesis(object sender, EventArgs e)
         {
 
         }

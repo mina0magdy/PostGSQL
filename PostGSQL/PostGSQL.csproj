@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PostGSQL</RootNamespace>
     <AssemblyName>PostGSQL</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44315</IISExpressSSLPort>
@@ -52,9 +52,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -67,7 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="addDefense.aspx" />
     <Content Include="examinerRegistration.aspx" />
+    <Content Include="listSuperStudents.aspx" />
     <Content Include="loggedAdmin.aspx" />
     <Content Include="loggedExaminer.aspx" />
     <Content Include="loggedGUCian.aspx" />
@@ -76,16 +78,31 @@
     <Content Include="loginPage.aspx" />
     <Content Include="StudentProfilePage.aspx" />
     <Content Include="studentRegistration.aspx" />
+    <Content Include="supervisorProfile.aspx" />
     <Content Include="supervisorRegistration.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addDefense.aspx.cs">
+      <DependentUpon>addDefense.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addDefense.aspx.designer.cs">
+      <DependentUpon>addDefense.aspx</DependentUpon>
+    </Compile>
     <Compile Include="examinerRegistration.aspx.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="examinerRegistration.aspx.designer.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="listSuperStudents.aspx.cs">
+      <DependentUpon>listSuperStudents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="listSuperStudents.aspx.designer.cs">
+      <DependentUpon>listSuperStudents.aspx</DependentUpon>
     </Compile>
     <Compile Include="loggedAdmin.aspx.cs">
       <DependentUpon>loggedAdmin.aspx</DependentUpon>
@@ -143,6 +160,13 @@
     </Compile>
     <Compile Include="studentRegistration.aspx.designer.cs">
       <DependentUpon>studentRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="supervisorProfile.aspx.cs">
+      <DependentUpon>supervisorProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="supervisorProfile.aspx.designer.cs">
+      <DependentUpon>supervisorProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="supervisorRegistration.aspx.cs">
       <DependentUpon>supervisorRegistration.aspx</DependentUpon>
