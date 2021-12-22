@@ -61,7 +61,7 @@ namespace PostGSQL
             conn.Close();
             if (sucess.Value.ToString() == "True")
             {
-                Session["user"] = id;
+                Session["user"] = id.Value;
                 if (type.Value.ToString() == "1")
                 {
                     Response.Redirect("loggedGUCian.aspx");
