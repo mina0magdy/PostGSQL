@@ -67,10 +67,60 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="examinerRegistration.aspx" />
+    <Content Include="loggedAdmin.aspx" />
+    <Content Include="loggedExaminer.aspx" />
+    <Content Include="loggedGUCian.aspx" />
+    <Content Include="loggedNonGUCian.aspx" />
+    <Content Include="loggedSupervisor.aspx" />
     <Content Include="loginPage.aspx" />
+    <Content Include="studentRegistration.aspx" />
+    <Content Include="supervisorRegistration.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="examinerRegistration.aspx.cs">
+      <DependentUpon>examinerRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examinerRegistration.aspx.designer.cs">
+      <DependentUpon>examinerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loggedAdmin.aspx.cs">
+      <DependentUpon>loggedAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loggedAdmin.aspx.designer.cs">
+      <DependentUpon>loggedAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loggedExaminer.aspx.cs">
+      <DependentUpon>loggedExaminer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loggedExaminer.aspx.designer.cs">
+      <DependentUpon>loggedExaminer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loggedGUCian.aspx.cs">
+      <DependentUpon>loggedGUCian.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loggedGUCian.aspx.designer.cs">
+      <DependentUpon>loggedGUCian.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loggedNonGUCian.aspx.cs">
+      <DependentUpon>loggedNonGUCian.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loggedNonGUCian.aspx.designer.cs">
+      <DependentUpon>loggedNonGUCian.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loggedSupervisor.aspx.cs">
+      <DependentUpon>loggedSupervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loggedSupervisor.aspx.designer.cs">
+      <DependentUpon>loggedSupervisor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="loginPage.aspx.cs">
       <DependentUpon>loginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -79,6 +129,20 @@
       <DependentUpon>loginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="studentRegistration.aspx.cs">
+      <DependentUpon>studentRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="studentRegistration.aspx.designer.cs">
+      <DependentUpon>studentRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="supervisorRegistration.aspx.cs">
+      <DependentUpon>supervisorRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="supervisorRegistration.aspx.designer.cs">
+      <DependentUpon>supervisorRegistration.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

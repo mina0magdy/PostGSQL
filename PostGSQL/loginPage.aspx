@@ -20,12 +20,12 @@
         <p>
             <asp:Button ID="Login" runat="server" OnClick="LoginButton" Text="Login" />
         </p>
-        <asp:HyperLink ID="studentRegistration" href ="studentRegistration" runat="server">Register as a student</asp:HyperLink>
+        <asp:HyperLink ID="studentRegistration" href ="studentRegistration.aspx" runat="server">Register as a student</asp:HyperLink>
         <p>
-            <asp:HyperLink ID="supervisorRegistration" href ="supervisorRegistration" runat="server">Register as a supervisor</asp:HyperLink>
+            <asp:HyperLink ID="supervisorRegistration" href ="supervisorRegistration.aspx" runat="server">Register as a supervisor</asp:HyperLink>
         </p>
         <p>
-            <asp:HyperLink ID="examinerRegistration" href ="examinerRegistration" runat="server">Register as an examiner</asp:HyperLink>
+            <asp:HyperLink ID="examinerRegistration" href ="examinerRegistration.aspx" runat="server">Register as an examiner</asp:HyperLink>
         </p>
     </form>
 </body>

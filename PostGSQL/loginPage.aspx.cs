@@ -47,14 +47,41 @@ namespace PostGSQL
             SqlParameter sucess = loginProc.Parameters.Add("@successBit", SqlDbType.Bit);
             sucess.Direction = System.Data.ParameterDirection.Output;
 
+            SqlCommand getType = new SqlCommand("GetType", conn);
+            getType.CommandType = CommandType.StoredProcedure;
+
+            getType.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = id.Value;
+
+            SqlParameter type = getType.Parameters.Add("@type", SqlDbType.Int);
+            type.Direction = System.Data.ParameterDirection.Output;
+
             conn.Open();
             loginProc.ExecuteNonQuery();
+            getType.ExecuteNonQuery();
             conn.Close();
             if (sucess.Value.ToString() == "True")
             {
-//                Session["user"] = id;
-                Response.Write("Omar Teezo 7amra");
-//                Response.Redirect("loginPage.aspx");
+                Session["user"] = id;
+                if (type.Value.ToString() == "1")
+                {
+                    Response.Redirect("loggedGUCian.aspx");
+                }
+                if (type.Value.ToString() == "2")
+                {
+                    Response.Redirect("loggedNonGUCian.aspx");
+                }
+                if (type.Value.ToString() == "3")
+                {
+                    Response.Redirect("loggedSupervisor.aspx");
+                }
+                if (type.Value.ToString() == "4")
+                {
+                    Response.Redirect("loggedExaminer.aspx");
+                }
+                if (type.Value.ToString() == "5")
+                {
+                    Response.Redirect("loggedAdmin.aspx");
+                }
             }
         }
     }
