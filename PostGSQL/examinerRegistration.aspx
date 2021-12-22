@@ -19,7 +19,7 @@
         <p>
             Email:</p>
         <p>
-            <asp:TextBox ID="Email" runat="server" required="true" placeholder="Example@something.com"></asp:TextBox>
+            <asp:TextBox ID="Email" runat="server" required="true" type="email" placeholder="Example@something"></asp:TextBox>
         </p>
         <p>
             Password:</p>

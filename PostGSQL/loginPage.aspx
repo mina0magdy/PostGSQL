@@ -11,11 +11,11 @@
         <div>
         </div>
         Username:<br />
-        <asp:TextBox ID="Email" runat="server"></asp:TextBox>
+        <asp:TextBox ID="Email" runat="server" required="true" placeholder="enter your email"></asp:TextBox>
         <p>
             Password:</p>
         <p>
-            <asp:TextBox ID="Password" runat="server"></asp:TextBox>
+            <asp:TextBox ID="Password" runat="server" type="password" required="true" placeholder="enter your password"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="Login" runat="server" OnClick="LoginButton" Text="Login" />
