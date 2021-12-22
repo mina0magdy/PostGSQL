@@ -18,11 +18,7 @@ namespace PostGSQL
         {
             //    id = (int)Session["user"];
         }
-        protected void ViewProf(object sender, EventArgs e)
-        {
-            Response.Redirect("StudentProfilePage.aspx");
-
-        }
+ 
 
         protected void Mobile(object sender, EventArgs e)
         {

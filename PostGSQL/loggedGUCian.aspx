@@ -14,6 +14,9 @@
         Hello GUCian :)</p>
         <asp:TextBox ID="mobile" runat="server" style="margin-left: 1280px; margin-bottom: 0px;" Width="154px"></asp:TextBox>
         <asp:Button ID="addMob" runat="server" OnClick="Mobile" style="margin-left: 1277px; margin-bottom: 2px;" Text="Add Mobile Number" />
+        <p>
+        <asp:HyperLink ID="HyperLink1" runat="server" href="StudentProfilePage.aspx">View my Profile</asp:HyperLink>
+        </p>
     </form>
     </body>
 </html>
