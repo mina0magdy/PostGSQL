@@ -17,9 +17,6 @@
         <p>
         <asp:HyperLink ID="HyperLink2" runat="server" href="ThesisPage.aspx">View Thesis</asp:HyperLink>
         </p>
-        <asp:HyperLink ID="HyperLink3" runat="server" href="CoursesPage.aspx">View Courses</asp:HyperLink>
-        <br />
-        <br />
         <asp:HyperLink ID="HyperLink4" runat="server" href="ProgressreportaddPage.aspx">Add progress report</asp:HyperLink>
          <br />
         <br />
