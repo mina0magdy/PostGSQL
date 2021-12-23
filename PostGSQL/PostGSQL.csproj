@@ -67,7 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CoursesPage.aspx" />
     <Content Include="examinerRegistration.aspx" />
     <Content Include="loggedAdmin.aspx" />
     <Content Include="loggedExaminer.aspx" />
@@ -85,13 +84,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoursesPage.aspx.cs">
-      <DependentUpon>CoursesPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CoursesPage.aspx.designer.cs">
-      <DependentUpon>CoursesPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="examinerRegistration.aspx.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
