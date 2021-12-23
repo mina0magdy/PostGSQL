@@ -28,18 +28,38 @@ namespace PostGSQL
             SqlDataReader rdr = AdminViewStudentProfile.ExecuteReader(CommandBehavior.CloseConnection);
             while (rdr.Read())
             {
-                String line5= rdr.GetString(rdr.GetOrdinal("id"));
+                int line5= rdr.GetInt32(rdr.GetOrdinal("id"));
                 String line = rdr.GetString(rdr.GetOrdinal("firstName"));
                 String line1 = rdr.GetString(rdr.GetOrdinal("lastName"));
                 String line2 = rdr.GetString(rdr.GetOrdinal("type"));
                 String line3 = rdr.GetString(rdr.GetOrdinal("faculty"));
                 String line4 = rdr.GetString(rdr.GetOrdinal("address"));
-                //decimal line5 = rdr.GetString(rdr.GetOrdinal("GPA"));
-                // String line6 = rdr.GetString(rdr.GetOrdinal("undergradID"));
+                float line6 = rdr.GetFloat(rdr.GetOrdinal("GPA"));
+               // String line6 = rdr.GetString(rdr.GetOrdinal("undergradID"));
 
-                Label label = new Label();
-                label.Text = "ID: "+line5+" Name: "+line + " " + line1 + " Degree: " + line2 + " Faculty: " + line3 + " Address: " + line4 ;
-                form1.Controls.Add(label);
+                Label label1 = new Label();
+                label1.Text = " ID: " + line5;
+                Label label2 = new Label();
+                label2.Text = " Name: " + line+" "+line1;
+                Label label3 = new Label();
+                label3.Text = " Degree: " + line2;
+                Label label6 = new Label();
+                label6.Text = " Faculty: " + line3;
+                Label label4 = new Label();
+                label4.Text = " Address: " + line4;
+                Label label5 = new Label();
+                label5.Text = "GPA: " + line6;
+                form1.Controls.Add(label1);
+                form1.Controls.Add(new LiteralControl("<br />"));
+                form1.Controls.Add(label2);
+                form1.Controls.Add(new LiteralControl("<br />"));
+                form1.Controls.Add(label3);
+                form1.Controls.Add(new LiteralControl("<br />"));
+                form1.Controls.Add(label6);
+                form1.Controls.Add(new LiteralControl("<br />"));
+                form1.Controls.Add(label4);
+                form1.Controls.Add(new LiteralControl("<br />"));
+                form1.Controls.Add(label5);
 
             }
         }

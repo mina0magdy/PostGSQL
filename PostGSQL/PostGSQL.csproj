@@ -78,10 +78,14 @@
     <Content Include="loggedNonGUCian.aspx" />
     <Content Include="loggedSupervisor.aspx" />
     <Content Include="loginPage.aspx" />
+    <Content Include="ProgressreportaddPage.aspx" />
+    <Content Include="ProgressreportfillPage.aspx" />
+    <Content Include="publicationPage.aspx" />
     <Content Include="StudentProfilePage.aspx" />
     <Content Include="studentRegistration.aspx" />
     <Content Include="supervisorProfile.aspx" />
     <Content Include="supervisorRegistration.aspx" />
+    <Content Include="ThesisPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +166,28 @@
     <Compile Include="loginPage.aspx.designer.cs">
       <DependentUpon>loginPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProgressreportaddPage.aspx.cs">
+      <DependentUpon>ProgressreportaddPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProgressreportaddPage.aspx.designer.cs">
+      <DependentUpon>ProgressreportaddPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressreportfillPage.aspx.cs">
+      <DependentUpon>ProgressreportfillPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProgressreportfillPage.aspx.designer.cs">
+      <DependentUpon>ProgressreportfillPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="publicationPage.aspx.cs">
+      <DependentUpon>publicationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="publicationPage.aspx.designer.cs">
+      <DependentUpon>publicationPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="StudentProfilePage.aspx.cs">
       <DependentUpon>StudentProfilePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,6 +215,13 @@
     </Compile>
     <Compile Include="supervisorRegistration.aspx.designer.cs">
       <DependentUpon>supervisorRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThesisPage.aspx.cs">
+      <DependentUpon>ThesisPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ThesisPage.aspx.designer.cs">
+      <DependentUpon>ThesisPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
