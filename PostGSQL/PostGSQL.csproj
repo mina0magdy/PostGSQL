@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PostGSQL</RootNamespace>
     <AssemblyName>PostGSQL</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44315</IISExpressSSLPort>
@@ -70,6 +70,7 @@
     <Content Include="addDefense.aspx" />
     <Content Include="addExaminer.aspx" />
     <Content Include="cancelThesis.aspx" />
+    <Content Include="CoursesPage.aspx" />
     <Content Include="editSupervisorProfile.aspx" />
     <Content Include="evaluatePR.aspx" />
     <Content Include="examinerRegistration.aspx" />
@@ -112,6 +113,13 @@
     </Compile>
     <Compile Include="cancelThesis.aspx.designer.cs">
       <DependentUpon>cancelThesis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CoursesPage.aspx.cs">
+      <DependentUpon>CoursesPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CoursesPage.aspx.designer.cs">
+      <DependentUpon>CoursesPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="editSupervisorProfile.aspx.cs">
       <DependentUpon>editSupervisorProfile.aspx</DependentUpon>

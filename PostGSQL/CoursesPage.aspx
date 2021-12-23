@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ThesisPage.aspx.cs" Inherits="PostGSQL.ThesisPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CoursesPage.aspx.cs" Inherits="PostGSQL.CoursesPage" %>
 
 <!DOCTYPE html>
 

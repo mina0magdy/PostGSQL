@@ -11,7 +11,7 @@ namespace PostGSQL
 {
 
 
-    public partial class ThesisPage
+    public partial class CoursesPage
     {
 
         /// <summary>
