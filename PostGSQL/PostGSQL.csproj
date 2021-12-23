@@ -68,9 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addDefense.aspx" />
+    <Content Include="addExaminer.aspx" />
     <Content Include="cancelThesis.aspx" />
     <Content Include="editSupervisorProfile.aspx" />
+    <Content Include="evaluatePR.aspx" />
     <Content Include="examinerRegistration.aspx" />
+    <Content Include="listPublications.aspx" />
     <Content Include="listSuperStudents.aspx" />
     <Content Include="loggedAdmin.aspx" />
     <Content Include="loggedExaminer.aspx" />
@@ -96,6 +99,13 @@
     <Compile Include="addDefense.aspx.designer.cs">
       <DependentUpon>addDefense.aspx</DependentUpon>
     </Compile>
+    <Compile Include="addExaminer.aspx.cs">
+      <DependentUpon>addExaminer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addExaminer.aspx.designer.cs">
+      <DependentUpon>addExaminer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cancelThesis.aspx.cs">
       <DependentUpon>cancelThesis.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -110,12 +120,26 @@
     <Compile Include="editSupervisorProfile.aspx.designer.cs">
       <DependentUpon>editSupervisorProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="evaluatePR.aspx.cs">
+      <DependentUpon>evaluatePR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="evaluatePR.aspx.designer.cs">
+      <DependentUpon>evaluatePR.aspx</DependentUpon>
+    </Compile>
     <Compile Include="examinerRegistration.aspx.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="examinerRegistration.aspx.designer.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="listPublications.aspx.cs">
+      <DependentUpon>listPublications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="listPublications.aspx.designer.cs">
+      <DependentUpon>listPublications.aspx</DependentUpon>
     </Compile>
     <Compile Include="listSuperStudents.aspx.cs">
       <DependentUpon>listSuperStudents.aspx</DependentUpon>
