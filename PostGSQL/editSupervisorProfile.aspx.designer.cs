@@ -11,7 +11,7 @@ namespace PostGSQL
 {
 
 
-    public partial class addDefense
+    public partial class editSupervisorProfile
     {
 
         /// <summary>
@@ -24,48 +24,30 @@ namespace PostGSQL
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// isGUCian control.
+        /// Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList isGUCian;
+        protected global::System.Web.UI.WebControls.TextBox Name;
 
         /// <summary>
-        /// ThesisSSN control.
+        /// Faculty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ThesisSSN;
+        protected global::System.Web.UI.WebControls.TextBox Faculty;
 
         /// <summary>
-        /// dateDefense control.
+        /// saveSupervisorEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox dateDefense;
-
-        /// <summary>
-        /// defenseHost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox defenseHost;
-
-        /// <summary>
-        /// addButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addButton;
+        protected global::System.Web.UI.WebControls.Button saveSupervisorEdit;
     }
 }

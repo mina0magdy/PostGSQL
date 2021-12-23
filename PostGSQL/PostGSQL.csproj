@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="addDefense.aspx" />
+    <Content Include="cancelThesis.aspx" />
+    <Content Include="editSupervisorProfile.aspx" />
     <Content Include="examinerRegistration.aspx" />
     <Content Include="listSuperStudents.aspx" />
     <Content Include="loggedAdmin.aspx" />
@@ -89,6 +91,20 @@
     </Compile>
     <Compile Include="addDefense.aspx.designer.cs">
       <DependentUpon>addDefense.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cancelThesis.aspx.cs">
+      <DependentUpon>cancelThesis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cancelThesis.aspx.designer.cs">
+      <DependentUpon>cancelThesis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editSupervisorProfile.aspx.cs">
+      <DependentUpon>editSupervisorProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editSupervisorProfile.aspx.designer.cs">
+      <DependentUpon>editSupervisorProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="examinerRegistration.aspx.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>

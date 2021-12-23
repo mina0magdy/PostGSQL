@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -16,7 +18,10 @@ namespace PostGSQL
 
         protected void addButton_Click(object sender, EventArgs e)
         {
+            String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
+            SqlConnection conn = new SqlConnection(connStr);
 
+            
         }
     }
 }
