@@ -8,12 +8,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+       <h1>Add Defense</h1>
+
+        
         <p>
             GUCian:</p>
         <p>
-            <asp:RadioButtonList ID="isGUCian" runat="server" required ="true">
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server" required ="true">
                 <asp:ListItem Value ="1" Selected ="True">Yes</asp:ListItem>
                 <asp:ListItem Value ="0">No</asp:ListItem>
             </asp:RadioButtonList>
@@ -25,11 +26,12 @@
         </p>
         <p>
             Date:
-            <asp:TextBox ID="dateDefense" runat="server" placeHolder ="dd/mm/yyyy" required ="true"></asp:TextBox>
+            <asp:TextBox ID="dateDefense" runat="server" placeHolder ="mm/dd/yyyy" required ="true"></asp:TextBox>
+            
         </p>
         <p>
             Host:
-            <asp:TextBox ID="defenseHost" runat="server" required ="true"></asp:TextBox>
+            <asp:TextBox ID="host" runat="server" required ="true"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="addButton" runat="server" Text="Add" OnClick="addButton_Click" />
