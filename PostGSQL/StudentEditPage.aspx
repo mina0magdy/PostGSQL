@@ -40,6 +40,9 @@
             <asp:TextBox ID="address" runat="server"  placeholder="enter your address"></asp:TextBox>
         </p>
         <asp:Button ID="register" runat="server" Text="Edit" OnClick="ESP" Width="70px" />
+        <asp:Panel ID="messagePanel" runat="server">
+        </asp:Panel>
+            <asp:Literal ID="textMessage" runat="server"></asp:Literal>
          <asp:Button ID="Button1" runat="server" style="margin-left: 1348px" OnClick="Backbutton" Text="Back" Width="79px" />
     </form>
 </body>

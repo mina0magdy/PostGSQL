@@ -54,7 +54,7 @@ namespace PostGSQL
                     grade = rdr.GetDecimal(rdr.GetOrdinal("grade")) + "";
 
             
-            dataRow["serialNumber"] = serialNumber;
+                dataRow["serialNumber"] = serialNumber;
                 dataRow["field"] = field;
                 dataRow["type"] = type;
                 dataRow["title"] = title;

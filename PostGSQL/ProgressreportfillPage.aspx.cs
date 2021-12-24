@@ -14,7 +14,34 @@ namespace PostGSQL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+        }
+        protected void Backbutton(object sender, EventArgs e)
+        {
+            String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
+
+            SqlConnection conn = new SqlConnection(connStr);
+
+            SqlCommand getType = new SqlCommand("GetType", conn);
+            getType.CommandType = CommandType.StoredProcedure;
+
+            getType.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = Session["user"];
+
+            SqlParameter type = getType.Parameters.Add("@type", SqlDbType.Int);
+            type.Direction = System.Data.ParameterDirection.Output;
+
+            conn.Open();
+            getType.ExecuteNonQuery();
+            conn.Close();
+
+            if (type.Value.ToString() == "1")
+            {
+                Response.Redirect("loggedGUCian.aspx");
+            }
+            if (type.Value.ToString() == "2")
+            {
+                Response.Redirect("loggedNonGUCian.aspx");
+            }
         }
         protected void Fillprogress(object sender, EventArgs e)
         {
@@ -27,35 +54,76 @@ namespace PostGSQL
             String statee = State.Text;
             String description = Report.Text;
 
-        SqlCommand FillProgressReport = new SqlCommand("FillProgressReport", conn);
-            FillProgressReport.CommandType = CommandType.StoredProcedure;
 
-            FillProgressReport.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
-            FillProgressReport.Parameters.Add(new SqlParameter("@progressReportNo", SqlDbType.Int)).Value = reportno;
-            FillProgressReport.Parameters.Add(new SqlParameter("@state", SqlDbType.Int)).Value = statee;
-            FillProgressReport.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar)).Value = description;
+            SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
+            checkThesis.CommandType = CommandType.StoredProcedure;
 
-            SqlCommand getType = new SqlCommand("GetType", conn);
-            getType.CommandType = CommandType.StoredProcedure;
 
-            getType.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = Session["user"];
+            checkThesis.Parameters.Add(new SqlParameter("@sid", SqlDbType.Int)).Value = Session["user"];
+            checkThesis.Parameters.Add(new SqlParameter("@serialNo", SqlDbType.Int)).Value = serialno;
+            SqlParameter isValid = checkThesis.Parameters.Add("@isValid", SqlDbType.Bit);
+            isValid.Direction = System.Data.ParameterDirection.Output;
 
-            SqlParameter type = getType.Parameters.Add("@type", SqlDbType.Int);
-            type.Direction = System.Data.ParameterDirection.Output;
+            SqlCommand checkreport = new SqlCommand("checkreport", conn);
+            checkreport.CommandType = CommandType.StoredProcedure;
 
+
+            checkreport.Parameters.Add(new SqlParameter("@pid", SqlDbType.Int)).Value = reportno;
+            checkreport.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
+            SqlParameter checkpid = checkreport.Parameters.Add("@checkpid", SqlDbType.Bit);
+            checkpid.Direction = System.Data.ParameterDirection.Output;
 
             conn.Open();
-            FillProgressReport.ExecuteNonQuery();
-            getType.ExecuteNonQuery();
+            checkThesis.ExecuteNonQuery();
+            checkreport.ExecuteNonQuery();
             conn.Close();
-
-            if (type.Value.ToString() == "1")
+            if (isValid.Value.ToString() == "False")
             {
-                Response.Redirect("loggedGUCian.aspx");
+                textMessage.Text = "Enter a serial number of your own thesis";
+                messagePanel.Style["text-align"] = "center";
+                //messagePanel.Visible = true;            
             }
-            if (type.Value.ToString() == "2")
+            else
             {
-                Response.Redirect("loggedNonGUCian.aspx");
+                if (checkpid.Value.ToString() == "False")
+                {
+
+                    textMessage.Text = "Enter a valid progress report number";
+                    messagePanel.Style["text-align"] = "center";
+                    //messagePanel.Visible = true;            
+                }
+                else
+                {
+
+                    SqlCommand FillProgressReportV2 = new SqlCommand("FillProgressReportV2", conn);
+                    FillProgressReportV2.CommandType = CommandType.StoredProcedure;
+
+                    FillProgressReportV2.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
+                    FillProgressReportV2.Parameters.Add(new SqlParameter("@progressReportNo", SqlDbType.Int)).Value = reportno;
+                    FillProgressReportV2.Parameters.Add(new SqlParameter("@state", SqlDbType.Int)).Value = statee;
+                    FillProgressReportV2.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar)).Value = description;
+
+                    SqlParameter success = FillProgressReportV2.Parameters.Add("@success", SqlDbType.Bit);
+                    success.Direction = System.Data.ParameterDirection.Output;
+
+
+                    conn.Open();
+                    FillProgressReportV2.ExecuteNonQuery();
+                  
+                    conn.Close();
+
+                    if (success.Value.ToString() == "True")
+                    {
+                        textMessage.Text = "Report Filled successfully";
+                        messagePanel.Style["text-align"] = "center";
+                    }
+                    else
+                    {
+                        textMessage.Text = "Failed to fill progress report : invalid entries";
+                        messagePanel.Style["text-align"] = "center";
+                    }
+                  
+                }
             }
         }
     }

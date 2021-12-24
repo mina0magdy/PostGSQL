@@ -46,11 +46,12 @@ namespace PostGSQL
             editMyProfile.Parameters.Add(new SqlParameter("@address", SqlDbType.VarChar)).Value = aaddress;
             editMyProfile.Parameters.Add(new SqlParameter("@type", SqlDbType.VarChar)).Value = types;
 
+            textMessage.Text = "Profile has been edited";
+            messagePanel.Style["text-align"] = "center";
             conn.Open();
             editMyProfile.ExecuteNonQuery();
             conn.Close();
 
-            Response.Redirect("StudentEditPage.aspx");
         }
     }
 }
