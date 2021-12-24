@@ -11,7 +11,7 @@ namespace PostGSQL
 {
 
 
-    public partial class loggedAdmin
+    public partial class editSupervisorProfile
     {
 
         /// <summary>
@@ -24,57 +24,30 @@ namespace PostGSQL
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// listSupervisors control.
+        /// Name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink listSupervisors;
+        protected global::System.Web.UI.WebControls.TextBox Name;
 
         /// <summary>
-        /// listTheses control.
+        /// Faculty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink listTheses;
+        protected global::System.Web.UI.WebControls.TextBox Faculty;
 
         /// <summary>
-        /// issuePayment control.
+        /// saveSupervisorEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink issuePayment;
-
-        /// <summary>
-        /// issueInstallments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink issueInstallments;
-
-        /// <summary>
-        /// thesisSSn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox thesisSSn;
-
-        /// <summary>
-        /// updateExt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button updateExt;
+        protected global::System.Web.UI.WebControls.Button saveSupervisorEdit;
     }
 }
