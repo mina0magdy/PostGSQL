@@ -74,6 +74,7 @@
     <Content Include="editSupervisorProfile.aspx" />
     <Content Include="evaluatePR.aspx" />
     <Content Include="examinerRegistration.aspx" />
+    <Content Include="issueInstallments.aspx" />
     <Content Include="issuePayment.aspx" />
     <Content Include="listPublications.aspx" />
     <Content Include="listSuperStudents.aspx" />
@@ -145,6 +146,13 @@
     </Compile>
     <Compile Include="examinerRegistration.aspx.designer.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="issueInstallments.aspx.cs">
+      <DependentUpon>issueInstallments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="issueInstallments.aspx.designer.cs">
+      <DependentUpon>issueInstallments.aspx</DependentUpon>
     </Compile>
     <Compile Include="issuePayment.aspx.cs">
       <DependentUpon>issuePayment.aspx</DependentUpon>
