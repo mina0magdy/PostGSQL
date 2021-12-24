@@ -42,6 +42,24 @@ namespace PostGSQL
         protected global::System.Web.UI.WebControls.Button addMob;
 
         /// <summary>
+        /// messagePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel messagePanel;
+
+        /// <summary>
+        /// textMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal textMessage;
+
+        /// <summary>
         /// HyperLink1 control.
         /// </summary>
         /// <remarks>

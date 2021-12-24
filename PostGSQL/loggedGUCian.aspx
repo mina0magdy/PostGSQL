@@ -15,6 +15,9 @@
         <asp:TextBox ID="mobile" runat="server" style="margin-left: 1254px; margin-bottom: 0px;" Width="161px"></asp:TextBox>
         <asp:Button ID="addMob" runat="server" OnClick="Mobile" style="margin-left: 1277px; margin-bottom: 2px;" Text="Add Mobile Number" Height="22px" Width="134px" />
         <p>
+            <asp:Panel ID="messagePanel" runat="server">
+            <asp:Literal ID="textMessage" runat="server"></asp:Literal>
+        </asp:Panel>
         <asp:HyperLink ID="HyperLink1" runat="server" href="StudentProfilePage.aspx">View my Profile</asp:HyperLink>
         </p>
         <asp:HyperLink ID="HyperLink2" runat="server" href="ThesisPage.aspx">View Thesis</asp:HyperLink>
