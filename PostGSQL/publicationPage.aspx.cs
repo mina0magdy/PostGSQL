@@ -31,37 +31,32 @@ namespace PostGSQL
             String serialnoo = serialno.Text;
 
             Boolean acc;
-            if (acceptedd == "1")
+            if (acceptedd == "yes")
                 acc = true;
             else
                 acc = false;
 
-            SqlCommand addPublication = new SqlCommand("addPublication", conn);
-            addPublication.CommandType = CommandType.StoredProcedure;
+            SqlCommand addPublicationV2 = new SqlCommand("addPublicationV2", conn);
+            addPublicationV2.CommandType = CommandType.StoredProcedure;
 
 
-            SqlCommand lastid = new SqlCommand("lastid", conn);
-            lastid.CommandType = CommandType.StoredProcedure;
-
-            addPublication.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar)).Value = titlez;
-            addPublication.Parameters.Add(new SqlParameter("@pubDate", SqlDbType.DateTime)).Value = DateTime.ParseExact(pub, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            addPublication.Parameters.Add(new SqlParameter("@host", SqlDbType.VarChar)).Value = hostt;
-            addPublication.Parameters.Add(new SqlParameter("@place", SqlDbType.VarChar)).Value = placee;
-            addPublication.Parameters.Add(new SqlParameter("@accepted", SqlDbType.Bit)).Value = acc;
-            
+         
+            addPublicationV2.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar)).Value = titlez;
+            addPublicationV2.Parameters.Add(new SqlParameter("@pubDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(pub, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            addPublicationV2.Parameters.Add(new SqlParameter("@host", SqlDbType.VarChar)).Value = hostt;
+            addPublicationV2.Parameters.Add(new SqlParameter("@place", SqlDbType.VarChar)).Value = placee;
+            addPublicationV2.Parameters.Add(new SqlParameter("@accepted", SqlDbType.Bit)).Value = acc;
+            SqlParameter id = addPublicationV2.Parameters.Add("@lastID", SqlDbType.Int);
+            id.Direction = System.Data.ParameterDirection.Output;
             conn.Open();
-            addPublication.ExecuteNonQuery();
+            addPublicationV2.ExecuteNonQuery();
             conn.Close();
 
-            SqlParameter id = lastid.Parameters.Add("@lastid", SqlDbType.Int);
-            id.Direction = System.Data.ParameterDirection.Output;
+           
 
             SqlCommand linkPubThesis = new SqlCommand("linkPubThesis", conn);
             linkPubThesis.CommandType = CommandType.StoredProcedure;
 
-            conn.Open();
-            lastid.ExecuteNonQuery();
-            conn.Close();
 
             linkPubThesis.Parameters.Add(new SqlParameter("@PubID", SqlDbType.Int)).Value = id.Value;
             linkPubThesis.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialnoo;

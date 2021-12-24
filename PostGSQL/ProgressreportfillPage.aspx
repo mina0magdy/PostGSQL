@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div> 
+              <h1>Fill Progress Report</h1>
            Thesis serialno:<br /><asp:TextBox ID="Thesis" runat="server" style="margin-left: 2px" Width="136px"></asp:TextBox>
            
         </div>

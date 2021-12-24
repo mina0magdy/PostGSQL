@@ -45,11 +45,16 @@ namespace PostGSQL
                 DateTime endDate = rdr.GetDateTime(rdr.GetOrdinal("endDate"));
                 DateTime defenseDate = rdr.GetDateTime(rdr.GetOrdinal("defenseDate"));
                 int years = rdr.GetInt32(rdr.GetOrdinal("years"));
-              //  Decimal grade = rdr.GetDecimal(rdr.GetOrdinal("grade"));
                 int payment_id = rdr.GetInt32(rdr.GetOrdinal("payment_id"));
                 int noExtension = rdr.GetInt32(rdr.GetOrdinal("noExtension"));
+                String grade;
+                if (rdr.IsDBNull(rdr.GetOrdinal("grade")))
+                    grade = string.Empty;
+                else
+                    grade = rdr.GetDecimal(rdr.GetOrdinal("grade")) + "";
 
-                dataRow["serialNumber"] = serialNumber;
+            
+            dataRow["serialNumber"] = serialNumber;
                 dataRow["field"] = field;
                 dataRow["type"] = type;
                 dataRow["title"] = title;
@@ -57,7 +62,7 @@ namespace PostGSQL
                 dataRow["endDate"] = endDate;
                 dataRow["defenseDate"] = defenseDate;
                 dataRow["years"] = years;
-                //dataRow["grade"] = grade;
+                dataRow["grade"] = grade;
                 dataRow["payment_id"] = payment_id;
                 dataRow["noExtension"] = noExtension;
                 table.Rows.Add(dataRow);

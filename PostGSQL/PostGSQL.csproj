@@ -85,6 +85,7 @@
     <Content Include="ProgressreportaddPage.aspx" />
     <Content Include="ProgressreportfillPage.aspx" />
     <Content Include="publicationPage.aspx" />
+    <Content Include="StudentEditPage.aspx" />
     <Content Include="StudentProfilePage.aspx" />
     <Content Include="studentRegistration.aspx" />
     <Content Include="supervisorProfile.aspx" />
@@ -219,6 +220,13 @@
     </Compile>
     <Compile Include="publicationPage.aspx.designer.cs">
       <DependentUpon>publicationPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentEditPage.aspx.cs">
+      <DependentUpon>StudentEditPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentEditPage.aspx.designer.cs">
+      <DependentUpon>StudentEditPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="StudentProfilePage.aspx.cs">
       <DependentUpon>StudentProfilePage.aspx</DependentUpon>

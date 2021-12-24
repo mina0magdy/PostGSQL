@@ -14,7 +14,7 @@
         </div>
 
         Publication Date:<br />
-        <asp:TextBox ID="pubdate" runat="server" required="true" Width="153px"></asp:TextBox>
+        <asp:TextBox ID="pubdate" runat="server" required="true" placeholder="dd/mm/yyyy" Width="153px"></asp:TextBox>
         <p>
             Host:<br />
             <asp:TextBox ID="host" runat="server" required="true" Width="153px"></asp:TextBox>
@@ -24,7 +24,7 @@
         <p>
          Accepted:   
         <asp:RadioButtonList ID="accepted" runat="server" required="true">
-            <asp:ListItem Text="yes" selected="true"></asp:ListItem>
+            <asp:ListItem Text="yes"  selected="true"></asp:ListItem>
             <asp:ListItem Text="no"></asp:ListItem>
         </asp:RadioButtonList>
           Thesis serialno:<br />  

@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
+          <h1>My Courses</h1>
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <FooterStyle BackColor="#CCCCCC" />
@@ -21,6 +22,8 @@
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
+                <asp:Button ID="Button1" runat="server" style="margin-left: 1398px" OnClick="Backbutton" Text="Back" Width="109px" />
+
     </form>
 </body>
 </html>
