@@ -20,6 +20,17 @@ namespace PostGSQL
             SqlCommand listTheses = new SqlCommand("AdminViewAllTheses", conn);
             listTheses.CommandType = CommandType.StoredProcedure;
 
+            SqlCommand thesesCount = new SqlCommand("AdminViewOnGoingThesesP", conn);
+            thesesCount.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter countT = thesesCount.Parameters.Add("@count", SqlDbType.Int);
+            countT.Direction = System.Data.ParameterDirection.Output;
+
+            conn.Open();
+            thesesCount.ExecuteNonQuery();
+            Response.Write("Number of ongoing Theses: " + countT.Value);
+            conn.Close();
+
             DataTable table = new DataTable();
             table.Columns.Add("Serial Number");
             table.Columns.Add("Field");
@@ -51,7 +62,7 @@ namespace PostGSQL
                 }
                 else
                 {
-                    dataRow["Start Date"] = "NULL";
+                    dataRow["Start Date"] = "_";
                 }
                 if (!rdr.IsDBNull(rdr.GetOrdinal("endDate")))
                 {
@@ -60,7 +71,7 @@ namespace PostGSQL
                 }
                 else
                 {
-                    dataRow["End Date"] = "NULL";
+                    dataRow["End Date"] = "_";
                 }
                 if (!rdr.IsDBNull(rdr.GetOrdinal("defenseDate")))
                 {
@@ -69,7 +80,7 @@ namespace PostGSQL
                 }
                 else
                 {
-                    dataRow["Defense Date"] = "NULL";
+                    dataRow["Defense Date"] = "_";
                 }
                 if (!rdr.IsDBNull(rdr.GetOrdinal("years")))
                 {
@@ -78,7 +89,7 @@ namespace PostGSQL
                 }
                 else
                 {
-                    dataRow["Years"] = "NULL";
+                    dataRow["Years"] = "_";
                 }
                 if (!rdr.IsDBNull(rdr.GetOrdinal("grade")))
                 {
@@ -87,7 +98,7 @@ namespace PostGSQL
                 }
                 else
                 {
-                    dataRow["Grade"] = "NULL";
+                    dataRow["Grade"] = "_";
                 }
                 if (!rdr.IsDBNull(rdr.GetOrdinal("payment_id")))
                 {
@@ -96,7 +107,7 @@ namespace PostGSQL
                 }
                 else
                 {
-                    dataRow["Payment ID"] = "NULL";
+                    dataRow["Payment ID"] = "_";
                 }
                 int NoExtension = rdr.GetInt32(rdr.GetOrdinal("noExtension"));
 
