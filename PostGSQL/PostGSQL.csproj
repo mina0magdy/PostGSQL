@@ -74,8 +74,11 @@
     <Content Include="editSupervisorProfile.aspx" />
     <Content Include="evaluatePR.aspx" />
     <Content Include="examinerRegistration.aspx" />
+    <Content Include="issuePayment.aspx" />
     <Content Include="listPublications.aspx" />
     <Content Include="listSuperStudents.aspx" />
+    <Content Include="listSupervisors.aspx" />
+    <Content Include="listTheses.aspx" />
     <Content Include="loggedAdmin.aspx" />
     <Content Include="loggedExaminer.aspx" />
     <Content Include="loggedGUCian.aspx" />
@@ -143,6 +146,13 @@
     <Compile Include="examinerRegistration.aspx.designer.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="issuePayment.aspx.cs">
+      <DependentUpon>issuePayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="issuePayment.aspx.designer.cs">
+      <DependentUpon>issuePayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="listPublications.aspx.cs">
       <DependentUpon>listPublications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,6 +166,20 @@
     </Compile>
     <Compile Include="listSuperStudents.aspx.designer.cs">
       <DependentUpon>listSuperStudents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="listSupervisors.aspx.cs">
+      <DependentUpon>listSupervisors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="listSupervisors.aspx.designer.cs">
+      <DependentUpon>listSupervisors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="listTheses.aspx.cs">
+      <DependentUpon>listTheses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="listTheses.aspx.designer.cs">
+      <DependentUpon>listTheses.aspx</DependentUpon>
     </Compile>
     <Compile Include="loggedAdmin.aspx.cs">
       <DependentUpon>loggedAdmin.aspx</DependentUpon>
