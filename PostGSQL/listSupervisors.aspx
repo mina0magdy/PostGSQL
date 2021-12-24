@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="listPublications.aspx.cs" Inherits="PostGSQL.listPublications" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="listSupervisors.aspx.cs" Inherits="PostGSQL.listSupervisors" %>
 
 <!DOCTYPE html>
 

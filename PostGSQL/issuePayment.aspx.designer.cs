@@ -11,7 +11,7 @@ namespace PostGSQL
 {
 
 
-    public partial class loggedAdmin
+    public partial class issuePayment
     {
 
         /// <summary>
@@ -24,30 +24,48 @@ namespace PostGSQL
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// listSupervisors control.
+        /// ThesisSSN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink listSupervisors;
+        protected global::System.Web.UI.WebControls.TextBox ThesisSSN;
 
         /// <summary>
-        /// listTheses control.
+        /// Amount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink listTheses;
+        protected global::System.Web.UI.WebControls.TextBox Amount;
 
         /// <summary>
-        /// issuePayment control.
+        /// noOfInstallmets control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink issuePayment;
+        protected global::System.Web.UI.WebControls.TextBox noOfInstallmets;
+
+        /// <summary>
+        /// fundPercentage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox fundPercentage;
+
+        /// <summary>
+        /// issuePaymentThesis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button issuePaymentThesis;
     }
 }

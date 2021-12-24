@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -22,56 +23,49 @@ namespace PostGSQL
 
             listPublications.Parameters.Add(new SqlParameter("@StudentID", SqlDbType.Int)).Value = Session["sid"];
 
+            DataTable table = new DataTable();
+            table.Columns.Add("id");
+            table.Columns.Add("title");
+            table.Columns.Add("date");
+            table.Columns.Add("place");
+            table.Columns.Add("accepted");
+            table.Columns.Add("host");
+
             conn.Open();
             SqlDataReader rdr = listPublications.ExecuteReader(CommandBehavior.CloseConnection);
+            Boolean flag = false;
             while (rdr.Read())
             {
-                int id = rdr.GetInt32(rdr.GetOrdinal("id"));
-                String title = rdr.GetString(rdr.GetOrdinal("title"));
-                String date = rdr.GetDateTime(rdr.GetOrdinal("date")).ToString();
-                String place = rdr.GetString(rdr.GetOrdinal("place"));
-                bool accepted = rdr.GetBoolean(rdr.GetOrdinal("accepted"));
-                String host = rdr.GetString(rdr.GetOrdinal("host"));
+                flag = true;
+                DataRow dataRow = table.NewRow();
+                int Pid = rdr.GetInt32(rdr.GetOrdinal("id"));
+                String Ptitle = rdr.GetString(rdr.GetOrdinal("title"));
+                DateTime Pdate = rdr.GetDateTime(rdr.GetOrdinal("date"));
+                String Pplace = rdr.GetString(rdr.GetOrdinal("place"));
+                Boolean Paccepted = rdr.GetBoolean(rdr.GetOrdinal("accepted"));
+                String Phost = rdr.GetString(rdr.GetOrdinal("host"));
 
-                Label idL = new Label();
-                idL.Text = "ID: " + id;
+                dataRow["id"] = Pid;
+                dataRow["title"] = Ptitle;
+                dataRow["date"] = Pdate;
+                dataRow["place"] = Pplace;
+                dataRow["accepted"] = Paccepted;
+                dataRow["host"] = Phost;
 
-                Label titleL = new Label();
-                titleL.Text = "Title: " + title;
+                table.Rows.Add(dataRow);
+            }
 
-                Label dateL = new Label();
-                dateL.Text = "Date: " + date;
+            if (flag == false)
+            {
+                Response.Write("<script>alert('No publication found for this student');</script>");
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+            }
+            else
+            {
+                GridView1.DataSource = table;
+                GridView1.DataBind();
 
-                Label placeL = new Label();
-                placeL.Text = "Place: " + place;
-
-                Label acceptedL = new Label();
-                if (accepted)
-                {
-                    acceptedL.Text = "Accepted: Yes";
-                }
-                else
-                {
-                    acceptedL.Text = "Accepted: No";
-                }
-
-                Label hostL = new Label();
-                hostL.Text = "Host: " + host;
-
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(idL);
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(titleL);
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(dateL);
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(placeL);
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(acceptedL);
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(hostL);
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(new LiteralControl("<br />"));
             }
 
         }
