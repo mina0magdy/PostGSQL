@@ -52,60 +52,71 @@ namespace PostGSQL
             String serialno = Thesis.Text;
             String dates = Date.Text;
 
-            SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
-            checkThesis.CommandType = CommandType.StoredProcedure;
-
-
-            checkThesis.Parameters.Add(new SqlParameter("@sid", SqlDbType.Int)).Value = Session["user"];
-            checkThesis.Parameters.Add(new SqlParameter("@serialNo", SqlDbType.Int)).Value = serialno;
-            SqlParameter isValid = checkThesis.Parameters.Add("@isValid", SqlDbType.Bit);
-            isValid.Direction = System.Data.ParameterDirection.Output;
-            conn.Open();
-            checkThesis.ExecuteNonQuery();
-            conn.Close();
-            if (isValid.Value.ToString() == "False")
+            if (serialno == "" || dates == "")
             {
-                textMessage.Text = "Enter a serial number of your own thesis";
+
+                textMessage.Text = "You need to fill all credentials";
                 messagePanel.Style["text-align"] = "center";
-                       
             }
             else
             {
-                SqlCommand AddProgressReport = new SqlCommand("AddProgressReport", conn);
-                AddProgressReport.CommandType = CommandType.StoredProcedure;
-
-                try
-                {
-                    AddProgressReport.Parameters.Add(new SqlParameter("@progressReportDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(dates, "dd/MM/yyyy", CultureInfo.InvariantCulture); 
-
-                }
-                catch (Exception ex)
-                {
-
-                    Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
-                    return;
-                }
-                AddProgressReport.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
-                
 
 
-                textMessage.Text = "Report added successfully";
-                messagePanel.Style["text-align"] = "center";
-                
+                SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
+                checkThesis.CommandType = CommandType.StoredProcedure;
+
+
+                checkThesis.Parameters.Add(new SqlParameter("@sid", SqlDbType.Int)).Value = Session["user"];
+                checkThesis.Parameters.Add(new SqlParameter("@serialNo", SqlDbType.Int)).Value = serialno;
+                SqlParameter isValid = checkThesis.Parameters.Add("@isValid", SqlDbType.Bit);
+                isValid.Direction = System.Data.ParameterDirection.Output;
                 conn.Open();
-                try
-                {
-                    AddProgressReport.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-
-                    Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
-                    return;
-                }
+                checkThesis.ExecuteNonQuery();
                 conn.Close();
+                if (isValid.Value.ToString() == "False")
+                {
+                    textMessage.Text = "Enter a serial number of your own thesis";
+                    messagePanel.Style["text-align"] = "center";
 
+                }
+                else
+                {
+                    SqlCommand AddProgressReport = new SqlCommand("AddProgressReport", conn);
+                    AddProgressReport.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        AddProgressReport.Parameters.Add(new SqlParameter("@progressReportDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(dates, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                        return;
+                    }
+                    AddProgressReport.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
+
+
+
+                    textMessage.Text = "Report added successfully";
+                    messagePanel.Style["text-align"] = "center";
+
+                    conn.Open();
+                    try
+                    {
+                        AddProgressReport.ExecuteNonQuery();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                        return;
+                    }
+                    conn.Close();
+
+                }
             }
         }
     }

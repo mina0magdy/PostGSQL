@@ -12,7 +12,7 @@
         </div>
     <p>
         <h1>Hello GUCian :)</h1></p>
-        <asp:TextBox ID="mobile" runat="server" style="margin-left: 1254px; margin-bottom: 0px;" Width="161px"></asp:TextBox>
+        <asp:TextBox ID="mobile" runat="server" Type="number" style="margin-left: 1254px; margin-bottom: 0px;" Width="161px"></asp:TextBox>
         <asp:Button ID="addMob" runat="server" OnClick="Mobile" style="margin-left: 1277px; margin-bottom: 2px;" Text="Add Mobile Number" Height="22px" Width="134px" />
         <p>
             <asp:Panel ID="messagePanel" runat="server">
