@@ -38,6 +38,28 @@
                    <asp:Button ID="Button2" runat="server" style="margin-left: 1212px; margin-bottom: 2px;" OnClick="Backbutton" Text="Back" Width="129px" />
 
         </p>
+         <!-- Bootstrap -->
+    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css'
+        media="screen" />
+    <!-- Bootstrap -->
+    <!-- Bootstrap DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"
+        type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"
+        type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=pubdate]').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: "dd/mm/yyyy",
+                language: "tr"
+            });
+        });
+    </script>
 
     </form>
 </body>
