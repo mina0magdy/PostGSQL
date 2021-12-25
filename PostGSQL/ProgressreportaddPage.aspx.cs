@@ -76,7 +76,7 @@ namespace PostGSQL
 
                 try
                 {
-                    AddProgressReport.Parameters.Add(new SqlParameter("@progressReportDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(dates, "dd/MM/yyyy", CultureInfo.InvariantCulture); ;
+                    AddProgressReport.Parameters.Add(new SqlParameter("@progressReportDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(dates, "dd/MM/yyyy", CultureInfo.InvariantCulture); 
 
                 }
                 catch (Exception ex)
