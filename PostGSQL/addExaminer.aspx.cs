@@ -29,6 +29,7 @@ namespace PostGSQL
             AddExaminer.Parameters.Add(new SqlParameter("@National", SqlDbType.VarChar)).Value = National.Text;
             AddExaminer.Parameters.Add(new SqlParameter("@fieldOfWork", SqlDbType.VarChar)).Value = fieldOfWork.Text;
             conn.Open();
+            Response.Write(National.Text);
             try
             {
                 AddExaminer.ExecuteNonQuery();

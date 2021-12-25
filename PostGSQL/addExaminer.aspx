@@ -18,8 +18,13 @@
             <asp:TextBox ID="ThesisSerialNo" runat="server" required ="true"></asp:TextBox>
         </p>
         <p>
-            National:
-            <asp:TextBox ID="National" runat="server" required ="true"></asp:TextBox>
+      
+            <p>
+            <asp:RadioButtonList ID="National" runat="server" required ="true">
+                <asp:ListItem Value ="1" Selected ="0"> National:</asp:ListItem>
+                <asp:ListItem Value ="1">International</asp:ListItem>
+            </asp:RadioButtonList>
+        </p>
         </p>
 
         <p>
