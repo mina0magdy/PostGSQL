@@ -54,75 +54,85 @@ namespace PostGSQL
             String statee = State.Text;
             String description = Report.Text;
 
-
-            SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
-            checkThesis.CommandType = CommandType.StoredProcedure;
-
-
-            checkThesis.Parameters.Add(new SqlParameter("@sid", SqlDbType.Int)).Value = Session["user"];
-            checkThesis.Parameters.Add(new SqlParameter("@serialNo", SqlDbType.Int)).Value = serialno;
-            SqlParameter isValid = checkThesis.Parameters.Add("@isValid", SqlDbType.Bit);
-            isValid.Direction = System.Data.ParameterDirection.Output;
-
-            SqlCommand checkreport = new SqlCommand("checkreport", conn);
-            checkreport.CommandType = CommandType.StoredProcedure;
-
-
-            checkreport.Parameters.Add(new SqlParameter("@pid", SqlDbType.Int)).Value = reportno;
-            checkreport.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
-            SqlParameter checkpid = checkreport.Parameters.Add("@checkpid", SqlDbType.Bit);
-            checkpid.Direction = System.Data.ParameterDirection.Output;
-
-            conn.Open();
-            checkThesis.ExecuteNonQuery();
-            checkreport.ExecuteNonQuery();
-            conn.Close();
-            if (isValid.Value.ToString() == "False")
+            if (serialno == "" || reportno == "" || statee == "" || description == "")
             {
-                textMessage.Text = "Enter a serial number of your own thesis";
+                textMessage.Text = "You need to fill all credentials";
                 messagePanel.Style["text-align"] = "center";
-                //messagePanel.Visible = true;            
             }
             else
             {
-                if (checkpid.Value.ToString() == "False")
-                {
 
-                    textMessage.Text = "Enter a valid progress report number";
+                SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
+                checkThesis.CommandType = CommandType.StoredProcedure;
+
+
+                checkThesis.Parameters.Add(new SqlParameter("@sid", SqlDbType.Int)).Value = Session["user"];
+                checkThesis.Parameters.Add(new SqlParameter("@serialNo", SqlDbType.Int)).Value = serialno;
+                SqlParameter isValid = checkThesis.Parameters.Add("@isValid", SqlDbType.Bit);
+                isValid.Direction = System.Data.ParameterDirection.Output;
+
+                SqlCommand checkreport = new SqlCommand("checkreport", conn);
+                checkreport.CommandType = CommandType.StoredProcedure;
+
+
+                checkreport.Parameters.Add(new SqlParameter("@pid", SqlDbType.Int)).Value = reportno;
+                checkreport.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
+                SqlParameter checkpid = checkreport.Parameters.Add("@checkpid", SqlDbType.Bit);
+                checkpid.Direction = System.Data.ParameterDirection.Output;
+
+                conn.Open();
+                checkThesis.ExecuteNonQuery();
+                checkreport.ExecuteNonQuery();
+                conn.Close();
+
+
+                if (isValid.Value.ToString() == "False")
+                {
+                    textMessage.Text = "Enter a serial number of your own thesis";
                     messagePanel.Style["text-align"] = "center";
                     //messagePanel.Visible = true;            
                 }
                 else
                 {
-
-                    SqlCommand FillProgressReportV2 = new SqlCommand("FillProgressReportV2", conn);
-                    FillProgressReportV2.CommandType = CommandType.StoredProcedure;
-
-                    FillProgressReportV2.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
-                    FillProgressReportV2.Parameters.Add(new SqlParameter("@progressReportNo", SqlDbType.Int)).Value = reportno;
-                    FillProgressReportV2.Parameters.Add(new SqlParameter("@state", SqlDbType.Int)).Value = statee;
-                    FillProgressReportV2.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar)).Value = description;
-
-                    SqlParameter success = FillProgressReportV2.Parameters.Add("@success", SqlDbType.Bit);
-                    success.Direction = System.Data.ParameterDirection.Output;
-
-
-                    conn.Open();
-                    FillProgressReportV2.ExecuteNonQuery();
-                  
-                    conn.Close();
-
-                    if (success.Value.ToString() == "True")
+                    if (checkpid.Value.ToString() == "False")
                     {
-                        textMessage.Text = "Report Filled successfully";
+
+                        textMessage.Text = "Enter a valid progress report number";
                         messagePanel.Style["text-align"] = "center";
+                        //messagePanel.Visible = true;            
                     }
                     else
                     {
-                        textMessage.Text = "Failed to fill progress report : invalid entries";
-                        messagePanel.Style["text-align"] = "center";
+
+                        SqlCommand FillProgressReportV2 = new SqlCommand("FillProgressReportV2", conn);
+                        FillProgressReportV2.CommandType = CommandType.StoredProcedure;
+
+                        FillProgressReportV2.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
+                        FillProgressReportV2.Parameters.Add(new SqlParameter("@progressReportNo", SqlDbType.Int)).Value = reportno;
+                        FillProgressReportV2.Parameters.Add(new SqlParameter("@state", SqlDbType.Int)).Value = statee;
+                        FillProgressReportV2.Parameters.Add(new SqlParameter("@description", SqlDbType.VarChar)).Value = description;
+
+                        SqlParameter success = FillProgressReportV2.Parameters.Add("@success", SqlDbType.Bit);
+                        success.Direction = System.Data.ParameterDirection.Output;
+
+
+                        conn.Open();
+                        FillProgressReportV2.ExecuteNonQuery();
+
+                        conn.Close();
+
+                        if (success.Value.ToString() == "True")
+                        {
+                            textMessage.Text = "Report Filled successfully";
+                            messagePanel.Style["text-align"] = "center";
+                        }
+                        else
+                        {
+                            textMessage.Text = "Failed to fill progress report : invalid entries";
+                            messagePanel.Style["text-align"] = "center";
+                        }
+
                     }
-                  
                 }
             }
         }

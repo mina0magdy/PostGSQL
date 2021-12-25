@@ -99,7 +99,7 @@ namespace PostGSQL
                 catch (Exception ex)
                 {
 
-                    Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                    Response.Write("<script>alert('Date must be written in dd/mm/yyyy format');</script>");
                     return;
                 }
                 addPublicationV2.Parameters.Add(new SqlParameter("@host", SqlDbType.VarChar)).Value = hostt;
@@ -116,7 +116,7 @@ namespace PostGSQL
                 catch(Exception ex)
                 {
 
-                    Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                    Response.Write("<script>alert('Date must be written in dd/mm/yyyy format');</script>");
                     return;
                 }
                 conn.Close();
