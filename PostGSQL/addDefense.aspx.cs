@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
@@ -13,7 +14,8 @@ namespace PostGSQL
     public partial class addDefense : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
+           // dateDefense.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
 
         }
@@ -47,7 +49,7 @@ namespace PostGSQL
                     SqlCommand AddDefenseGucian = new SqlCommand("AddDefenseGucian", conn);
                     AddDefenseGucian.CommandType = CommandType.StoredProcedure;
                     AddDefenseGucian.Parameters.Add(new SqlParameter("@ThesisSerialNo", SqlDbType.Int)).Value = ThesisSSN.Text;
-                    AddDefenseGucian.Parameters.Add(new SqlParameter("@DefenseDate", SqlDbType.DateTime)).Value = dateDefense.Text;
+                    AddDefenseGucian.Parameters.Add(new SqlParameter("@DefenseDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(dateDefense.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                     AddDefenseGucian.Parameters.Add(new SqlParameter("@DefenseLocation", SqlDbType.VarChar)).Value = host.Text;
                     conn.Open();
                     try
@@ -104,7 +106,7 @@ namespace PostGSQL
                     SqlCommand AddDefenseNonGucian = new SqlCommand("AddDefenseNonGucian", conn);
                     AddDefenseNonGucian.CommandType = CommandType.StoredProcedure;
                     AddDefenseNonGucian.Parameters.Add(new SqlParameter("@ThesisSerialNo", SqlDbType.Int)).Value = ThesisSSN.Text;
-                    AddDefenseNonGucian.Parameters.Add(new SqlParameter("@DefenseDate", SqlDbType.DateTime)).Value = dateDefense.Text;
+                    AddDefenseNonGucian.Parameters.Add(new SqlParameter("@DefenseDate", SqlDbType.DateTime)).Value = DateTime.ParseExact(dateDefense.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                     AddDefenseNonGucian.Parameters.Add(new SqlParameter("@DefenseLocation", SqlDbType.VarChar)).Value = host.Text;
                     conn.Open();
                     try

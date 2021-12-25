@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
@@ -24,7 +25,7 @@ namespace PostGSQL
             SqlCommand AddExaminer = new SqlCommand("AddExaminer", conn);
             AddExaminer.CommandType = CommandType.StoredProcedure;
             AddExaminer.Parameters.Add(new SqlParameter("@ThesisSerialNo", SqlDbType.Int)).Value = ThesisSerialNo.Text;
-            AddExaminer.Parameters.Add(new SqlParameter("@DefenseDate", SqlDbType.DateTime)).Value = DefenseDate.Text;
+            AddExaminer.Parameters.Add(new SqlParameter("@DefenseDate", SqlDbType.DateTime)).Value =  DateTime.ParseExact(DefenseDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             AddExaminer.Parameters.Add(new SqlParameter("@ExaminerName", SqlDbType.VarChar)).Value = ExaminerName.Text;
             AddExaminer.Parameters.Add(new SqlParameter("@National", SqlDbType.VarChar)).Value = National.Text;
             AddExaminer.Parameters.Add(new SqlParameter("@fieldOfWork", SqlDbType.VarChar)).Value = fieldOfWork.Text;
