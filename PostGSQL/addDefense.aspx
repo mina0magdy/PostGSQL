@@ -30,7 +30,7 @@
             
         </p>
         <p>
-            Host:
+            location:
             <asp:TextBox ID="host" runat="server" required ="true"></asp:TextBox>
         </p>
         <p>
