@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
@@ -29,13 +30,13 @@ namespace PostGSQL
             else
             {
                 int pID = int.Parse(paymentID.Text);
-                DateTime sDate = DateTime.Parse(startDate.Text);
+                String sDate = startDate.Text;
 
                 SqlCommand issueInstallments = new SqlCommand("AdminIssueInstallPayment", conn);
                 issueInstallments.CommandType = CommandType.StoredProcedure;
 
                 issueInstallments.Parameters.Add(new SqlParameter("@paymentID", SqlDbType.Int)).Value = pID;
-                issueInstallments.Parameters.Add(new SqlParameter("@InstallStartDate", SqlDbType.DateTime)).Value = sDate;
+                issueInstallments.Parameters.Add(new SqlParameter("@InstallStartDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(sDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 SqlCommand validPayment = new SqlCommand("validPayment", conn);
                 validPayment.CommandType = CommandType.StoredProcedure;
