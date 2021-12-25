@@ -22,18 +22,69 @@ namespace PostGSQL
             String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
             SqlConnection conn = new SqlConnection(connStr);
 
-            int pID = int.Parse(paymentID.Text);
-            DateTime sDate = DateTime.Parse(startDate.Text);
+            if(paymentID.Text == "" || startDate.Text == "")
+            {
+                Response.Write("<script>alert('One of the fields is empty, Please enter all fields');</script>");
+            }
+            else
+            {
+                int pID = int.Parse(paymentID.Text);
+                DateTime sDate = DateTime.Parse(startDate.Text);
 
-            SqlCommand issueInstallments = new SqlCommand("AdminIssueInstallPayment", conn);
-            issueInstallments.CommandType = CommandType.StoredProcedure;
+                SqlCommand issueInstallments = new SqlCommand("AdminIssueInstallPayment", conn);
+                issueInstallments.CommandType = CommandType.StoredProcedure;
 
-            issueInstallments.Parameters.Add(new SqlParameter("@paymentID", SqlDbType.Int)).Value = pID;
-            issueInstallments.Parameters.Add(new SqlParameter("@InstallStartDate", SqlDbType.DateTime)).Value = sDate;
+                issueInstallments.Parameters.Add(new SqlParameter("@paymentID", SqlDbType.Int)).Value = pID;
+                issueInstallments.Parameters.Add(new SqlParameter("@InstallStartDate", SqlDbType.DateTime)).Value = sDate;
 
-            conn.Open();
-            issueInstallments.ExecuteNonQuery();
-            conn.Close();
+                SqlCommand validPayment = new SqlCommand("validPayment", conn);
+                validPayment.CommandType = CommandType.StoredProcedure;
+
+                validPayment.Parameters.Add(new SqlParameter("@paymentID", SqlDbType.Int)).Value = pID;
+
+                SqlParameter valid = validPayment.Parameters.Add("@valid", SqlDbType.Bit);
+                valid.Direction = System.Data.ParameterDirection.Output;
+
+                SqlCommand noInstallPayment = new SqlCommand("noInstallPay", conn);
+                noInstallPayment.CommandType = CommandType.StoredProcedure;
+
+                noInstallPayment.Parameters.Add(new SqlParameter("@paymentID", SqlDbType.Int)).Value = pID;
+
+                SqlParameter noInstall = noInstallPayment.Parameters.Add("@noInstall", SqlDbType.Bit);
+                noInstall.Direction = System.Data.ParameterDirection.Output;
+
+                conn.Open();
+                validPayment.ExecuteNonQuery();
+                noInstallPayment.ExecuteNonQuery();
+                conn.Close();
+
+                if(valid.Value.ToString() == "False")
+                {
+                    Response.Write("<script>alert('Invalid Payment ID');</script>");
+
+                }
+                else
+                {
+                    if (noInstall.Value.ToString() == "False")
+                    {
+                        Response.Write("<script>alert('Installment(s) already exist for this payment');</script>");
+                    }
+                    else
+                    {
+                        conn.Open();
+                        Response.Write("Installment(s) added successfully");
+                        issueInstallments.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+               
+            }
+           
+        }
+
+        protected void back_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("loggedAdmin.aspx");
         }
     }
 }

@@ -16,11 +16,12 @@
         </p>
         <p>
             Installments Start Date:
-            <asp:TextBox ID="startDate" runat="server"></asp:TextBox>
+            <asp:TextBox ID="startDate" runat="server" placeHolder ="mm/dd/yyyy"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="issueInstallmentsP" runat="server" Text="Issue Installments" OnClick="issueInstallmentsP_Click" />
         </p>
+        <asp:Button ID="back" runat="server" Text="back" OnClick="back_Click" />
     </form>
 </body>
 </html>
