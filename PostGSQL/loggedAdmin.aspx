@@ -22,7 +22,7 @@
             Update the number of extensions for a thesis:</p>
         <p>
             Thesis serial number:
-            <asp:TextBox ID="thesisSSn" runat="server" required ="true"></asp:TextBox>
+            <asp:TextBox ID="thesisSSn" runat="server" required ="true" type ="number"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="updateExt" runat="server" Text="Update" OnClick="updateExt_Click" />

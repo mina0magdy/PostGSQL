@@ -76,17 +76,10 @@ namespace PostGSQL
                     }
                     else
                     {
-                        if(success.Value.ToString() == "True")
-                        {
-                            conn.Open();
-                            Response.Write("Payment added successfully");
-                            issuePayment.ExecuteNonQuery();
-                            conn.Close();
-                        }
-                        else
-                        {
-                            Response.Write("<script>alert('An error occurred adding the payment');</script>");
-                        }
+                        conn.Open();
+                        Response.Write("Payment added successfully");
+                        issuePayment.ExecuteNonQuery();
+                        conn.Close();
                     }
                 }
             }
