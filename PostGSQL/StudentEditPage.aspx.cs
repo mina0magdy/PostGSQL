@@ -22,36 +22,46 @@ namespace PostGSQL
         }
         protected void ESP(object sender, EventArgs e)
         {
-            String connStr = WebConfigurationManager.ConnectionStrings ["PostGSQL"].ToString();
+            String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
 
             SqlConnection conn = new SqlConnection(connStr);
 
 
-        String firstname = firstName.Text;
-        String lastname = lastName.Text;
-        String mail = email.Text;
-        String pass = password.Text;
-        String aaddress = address.Text;
-        String types = type.SelectedItem.Text;
-       
+            String firstname = firstName.Text;
+            String lastname = lastName.Text;
+            String mail = email.Text;
+            String pass = password.Text;
+            String aaddress = address.Text;
+            String types = type.SelectedItem.Text;
+            if (firstname == "" || lastname == "" || mail == "" || pass == "" || aaddress == "" || types == "")
+            {
 
-            SqlCommand editMyProfile = new SqlCommand("editMyProfile", conn);
-            editMyProfile.CommandType = CommandType.StoredProcedure;
+                textMessage.Text = "You need to fill all credentials";
+                messagePanel.Style["text-align"] = "center";
+            }
+            else
+            {
 
-            editMyProfile.Parameters.Add(new SqlParameter("@studentID", SqlDbType.VarChar)).Value = Session["user"];
-            editMyProfile.Parameters.Add(new SqlParameter("@firstName", SqlDbType.VarChar)).Value = firstname;
-            editMyProfile.Parameters.Add(new SqlParameter("@lastName", SqlDbType.VarChar)).Value = lastname;
-            editMyProfile.Parameters.Add(new SqlParameter("@password", SqlDbType.VarChar)).Value = pass;
-            editMyProfile.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar)).Value = mail;
-            editMyProfile.Parameters.Add(new SqlParameter("@address", SqlDbType.VarChar)).Value = aaddress;
-            editMyProfile.Parameters.Add(new SqlParameter("@type", SqlDbType.VarChar)).Value = types;
 
-            textMessage.Text = "Profile has been edited";
-            messagePanel.Style["text-align"] = "center";
-            conn.Open();
-            editMyProfile.ExecuteNonQuery();
-            conn.Close();
 
+                SqlCommand editMyProfile = new SqlCommand("editMyProfile", conn);
+                editMyProfile.CommandType = CommandType.StoredProcedure;
+
+                editMyProfile.Parameters.Add(new SqlParameter("@studentID", SqlDbType.VarChar)).Value = Session["user"];
+                editMyProfile.Parameters.Add(new SqlParameter("@firstName", SqlDbType.VarChar)).Value = firstname;
+                editMyProfile.Parameters.Add(new SqlParameter("@lastName", SqlDbType.VarChar)).Value = lastname;
+                editMyProfile.Parameters.Add(new SqlParameter("@password", SqlDbType.VarChar)).Value = pass;
+                editMyProfile.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar)).Value = mail;
+                editMyProfile.Parameters.Add(new SqlParameter("@address", SqlDbType.VarChar)).Value = aaddress;
+                editMyProfile.Parameters.Add(new SqlParameter("@type", SqlDbType.VarChar)).Value = types;
+
+                textMessage.Text = "Profile has been edited";
+                messagePanel.Style["text-align"] = "center";
+                conn.Open();
+                editMyProfile.ExecuteNonQuery();
+                conn.Close();
+
+            }
         }
     }
 }

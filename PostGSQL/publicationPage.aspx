@@ -15,7 +15,7 @@
         </div>
 
         Publication Date:<br />
-        <asp:TextBox ID="pubdate" runat="server"  placeholder="dd/mm/yyyy" Width="153px"></asp:TextBox>
+        <asp:TextBox ID="pubdate" runat="server" placeholder="dd/mm/yyyy" Width="153px"></asp:TextBox>
         <p>
             Host:<br />
             <asp:TextBox ID="host" runat="server" placeholder="Enter host here" Width="153px"></asp:TextBox>
