@@ -74,15 +74,36 @@ namespace PostGSQL
                 SqlCommand AddProgressReport = new SqlCommand("AddProgressReport", conn);
                 AddProgressReport.CommandType = CommandType.StoredProcedure;
 
+                try
+                {
+                    AddProgressReport.Parameters.Add(new SqlParameter("@progressReportDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(dates, "dd/MM/yyyy", CultureInfo.InvariantCulture); ;
+
+                }
+                catch (Exception ex)
+                {
+
+                    Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                    return;
+                }
                 AddProgressReport.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
-                AddProgressReport.Parameters.Add(new SqlParameter("@progressReportDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(dates, "dd/MM/yyyy", CultureInfo.InvariantCulture); ;
+                
 
 
                 textMessage.Text = "Report added successfully";
                 messagePanel.Style["text-align"] = "center";
                 
                 conn.Open();
-                AddProgressReport.ExecuteNonQuery();
+                try
+                {
+                    AddProgressReport.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+
+                    Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                    return;
+                }
                 conn.Close();
 
             }

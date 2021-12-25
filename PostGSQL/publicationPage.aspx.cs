@@ -91,14 +91,34 @@ namespace PostGSQL
 
 
                 addPublicationV2.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar)).Value = titlez;
-                addPublicationV2.Parameters.Add(new SqlParameter("@pubDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(pub, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                try
+                {
+                    addPublicationV2.Parameters.Add(new SqlParameter("@pubDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(pub, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                }
+                catch (Exception ex)
+                {
+
+                    Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                    return;
+                }
                 addPublicationV2.Parameters.Add(new SqlParameter("@host", SqlDbType.VarChar)).Value = hostt;
                 addPublicationV2.Parameters.Add(new SqlParameter("@place", SqlDbType.VarChar)).Value = placee;
                 addPublicationV2.Parameters.Add(new SqlParameter("@accepted", SqlDbType.Bit)).Value = acc;
                 SqlParameter id = addPublicationV2.Parameters.Add("@lastID", SqlDbType.Int);
                 id.Direction = System.Data.ParameterDirection.Output;
                 conn.Open();
-                addPublicationV2.ExecuteNonQuery();
+                try
+                {
+                    addPublicationV2.ExecuteNonQuery();
+
+                }
+                catch(Exception ex)
+                {
+
+                    Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                    return;
+                }
                 conn.Close();
 
                 
