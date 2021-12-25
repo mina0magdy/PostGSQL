@@ -58,85 +58,94 @@ namespace PostGSQL
             String acceptedd = accepted.SelectedItem.Text;
             String serialnoo = serialno.Text;
 
-
-            SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
-            checkThesis.CommandType = CommandType.StoredProcedure;
-
-
-            checkThesis.Parameters.Add(new SqlParameter("@sid", SqlDbType.Int)).Value = Session["user"];
-            checkThesis.Parameters.Add(new SqlParameter("@serialNo", SqlDbType.Int)).Value = serialnoo;
-            SqlParameter isValid = checkThesis.Parameters.Add("@isValid", SqlDbType.Bit);
-            isValid.Direction = System.Data.ParameterDirection.Output;
-            conn.Open();
-            checkThesis.ExecuteNonQuery();
-            conn.Close();
-            if (isValid.Value.ToString() == "False")
+            if (titlez == "" || pub == "" || hostt == "" || placee == "" || acceptedd == "" || serialnoo == "")
             {
-                textMessage.Text = "Enter a serial number of your own thesis";
+                textMessage.Text = "You need to fill all credentials";
                 messagePanel.Style["text-align"] = "center";
-                //messagePanel.Visible = true;            
             }
             else
             {
 
-                Boolean acc;
-                if (acceptedd == "yes")
-                    acc = true;
+                SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
+                checkThesis.CommandType = CommandType.StoredProcedure;
+
+
+                checkThesis.Parameters.Add(new SqlParameter("@sid", SqlDbType.Int)).Value = Session["user"];
+                checkThesis.Parameters.Add(new SqlParameter("@serialNo", SqlDbType.Int)).Value = serialnoo;
+                SqlParameter isValid = checkThesis.Parameters.Add("@isValid", SqlDbType.Bit);
+                isValid.Direction = System.Data.ParameterDirection.Output;
+                conn.Open();
+                checkThesis.ExecuteNonQuery();
+                conn.Close();
+
+                if (isValid.Value.ToString() == "False")
+                {
+                    textMessage.Text = "Enter a serial number of your own thesis";
+                    messagePanel.Style["text-align"] = "center";
+                    //messagePanel.Visible = true;            
+                }
                 else
-                    acc = false;
-
-                SqlCommand addPublicationV2 = new SqlCommand("addPublicationV2", conn);
-                addPublicationV2.CommandType = CommandType.StoredProcedure;
-
-
-
-                addPublicationV2.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar)).Value = titlez;
-                try
-                {
-                    addPublicationV2.Parameters.Add(new SqlParameter("@pubDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(pub, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                }
-                catch (Exception ex)
                 {
 
-                    Response.Write("<script>alert('Date must be written in dd/mm/yyyy format');</script>");
-                    return;
-                }
-                addPublicationV2.Parameters.Add(new SqlParameter("@host", SqlDbType.VarChar)).Value = hostt;
-                addPublicationV2.Parameters.Add(new SqlParameter("@place", SqlDbType.VarChar)).Value = placee;
-                addPublicationV2.Parameters.Add(new SqlParameter("@accepted", SqlDbType.Bit)).Value = acc;
-                SqlParameter id = addPublicationV2.Parameters.Add("@lastID", SqlDbType.Int);
-                id.Direction = System.Data.ParameterDirection.Output;
-                conn.Open();
-                try
-                {
-                    addPublicationV2.ExecuteNonQuery();
+                    Boolean acc;
+                    if (acceptedd == "yes")
+                        acc = true;
+                    else
+                        acc = false;
+
+                    SqlCommand addPublicationV2 = new SqlCommand("addPublicationV2", conn);
+                    addPublicationV2.CommandType = CommandType.StoredProcedure;
+
+
+
+                    addPublicationV2.Parameters.Add(new SqlParameter("@title", SqlDbType.VarChar)).Value = titlez;
+                    try
+                    {
+                        addPublicationV2.Parameters.Add(new SqlParameter("@pubDate", SqlDbType.VarChar)).Value = DateTime.ParseExact(pub, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Response.Write("<script>alert('Date must be written in dd/mm/yyyy format');</script>");
+                        return;
+                    }
+                    addPublicationV2.Parameters.Add(new SqlParameter("@host", SqlDbType.VarChar)).Value = hostt;
+                    addPublicationV2.Parameters.Add(new SqlParameter("@place", SqlDbType.VarChar)).Value = placee;
+                    addPublicationV2.Parameters.Add(new SqlParameter("@accepted", SqlDbType.Bit)).Value = acc;
+                    SqlParameter id = addPublicationV2.Parameters.Add("@lastID", SqlDbType.Int);
+                    id.Direction = System.Data.ParameterDirection.Output;
+                    conn.Open();
+                    try
+                    {
+                        addPublicationV2.ExecuteNonQuery();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Response.Write("<script>alert('Date must be written in dd/mm/yyyy format');</script>");
+                        return;
+                    }
+                    conn.Close();
+
+
+                    SqlCommand linkPubThesis = new SqlCommand("linkPubThesis", conn);
+                    linkPubThesis.CommandType = CommandType.StoredProcedure;
+
+
+                    linkPubThesis.Parameters.Add(new SqlParameter("@PubID", SqlDbType.Int)).Value = id.Value;
+                    linkPubThesis.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialnoo;
+
+                    textMessage.Text = "Publication created and linked successfully";
+                    messagePanel.Style["text-align"] = "center";
+
+
+                    conn.Open();
+                    linkPubThesis.ExecuteNonQuery();
+                    conn.Close();
 
                 }
-                catch(Exception ex)
-                {
-
-                    Response.Write("<script>alert('Date must be written in dd/mm/yyyy format');</script>");
-                    return;
-                }
-                conn.Close();
-
-                
-                SqlCommand linkPubThesis = new SqlCommand("linkPubThesis", conn);
-                linkPubThesis.CommandType = CommandType.StoredProcedure;
-
-
-                linkPubThesis.Parameters.Add(new SqlParameter("@PubID", SqlDbType.Int)).Value = id.Value;
-                linkPubThesis.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialnoo;
-
-                textMessage.Text = "Publication created and linked successfully";
-                messagePanel.Style["text-align"] = "center";
-
-
-                conn.Open();
-                linkPubThesis.ExecuteNonQuery();
-                conn.Close();
-             
             }
         }
     }

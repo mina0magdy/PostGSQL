@@ -51,6 +51,9 @@
             <asp:TextBox ID="address" runat="server" required="true" placeholder="enter your address"></asp:TextBox>
         </p>
         <asp:Button ID="register" runat="server" Text="Register" OnClick="Register" />
+        <asp:Panel ID="messagePanel" runat="server">
+            <asp:Literal ID="textMessage" runat="server"></asp:Literal>
+        </asp:Panel>
     </form>
     </body>
 </html>
