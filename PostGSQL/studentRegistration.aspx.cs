@@ -16,8 +16,12 @@ namespace PostGSQL
         {
 
         }
+        protected void Backbutton(object sender, EventArgs e)
+        {
 
-        protected void Register(object sender, EventArgs e)
+            Response.Redirect("loginPage.aspx");
+        }
+            protected void Register(object sender, EventArgs e)
         {
             String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
 
@@ -35,7 +39,7 @@ namespace PostGSQL
             Boolean GUCBit;
             if (firstname == "" || lastname == "" || mail == "" || pass == "" || ffaculty == "" || aaddress == "" || Ggucian == "" || types == "")
             {
-                textMessage.Text = "You need to fill all credentials";
+                textMessage.Text = "You need to fill all fields";
                 messagePanel.Style["text-align"] = "center";
             }
             else
@@ -63,7 +67,8 @@ namespace PostGSQL
                 StudentRegister.ExecuteNonQuery();
                 conn.Close();
 
-                Response.Redirect("loginPage.aspx");
+                textMessage.Text = "User registered successfully";
+                messagePanel.Style["text-align"] = "center";
             }
         }
     }

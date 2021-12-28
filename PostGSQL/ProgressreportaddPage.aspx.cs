@@ -55,7 +55,7 @@ namespace PostGSQL
             if (serialno == "" || dates == "")
             {
 
-                textMessage.Text = "You need to fill all credentials";
+                textMessage.Text = "You need to fill all fields";
                 messagePanel.Style["text-align"] = "center";
             }
             else
