@@ -62,7 +62,7 @@ namespace PostGSQL
             else
             {
 
-                SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
+                SqlCommand checkThesis = new SqlCommand("checkThesisV2", conn);
                 checkThesis.CommandType = CommandType.StoredProcedure;
 
 
@@ -88,7 +88,7 @@ namespace PostGSQL
 
                 if (isValid.Value.ToString() == "False")
                 {
-                    textMessage.Text = "Enter a serial number of your own thesis";
+                    textMessage.Text = "You either don't own this Thesis or it is outdated";
                     messagePanel.Style["text-align"] = "center";
                     //messagePanel.Visible = true;            
                 }

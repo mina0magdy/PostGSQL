@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <h1>Publication Page</h1>
+            <h2>Add publication</h2>
             Title:<br />
             <asp:TextBox ID="title" runat="server" placeholder="Enter your title here" Width="251px" ></asp:TextBox>
         </div>
@@ -28,13 +29,24 @@
             <asp:ListItem Text="yes"  selected="true"></asp:ListItem>
             <asp:ListItem Text="no"></asp:ListItem>
         </asp:RadioButtonList>
+          <p>
+              <asp:Panel ID="Panel1" runat="server">
+            <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+        </asp:Panel>
+                             <asp:Button ID="Button3" runat="server" Onclick= "addpub" style="margin-left: 1185px" Text="Add" Width="171px" />
+
+            <h2>Link publication</h2>
+            &nbsp;<p>
           Thesis serialno:<br />  
         <asp:TextBox ID="serialno" placeholder="xxxx" runat="server" ></asp:TextBox>
            
-            <asp:Panel ID="messagePanel" runat="server">
+            <p>
+                PubID:<br />  
+        <asp:TextBox ID="pubid" placeholder="xxxx" runat="server" ></asp:TextBox>
+                &nbsp;<asp:Panel ID="messagePanel" runat="server">
             <asp:Literal ID="textMessage" runat="server"></asp:Literal>
         </asp:Panel>
-            <asp:Button ID="Button1" runat="server" Onclick= "linknadd" style="margin-left: 1185px" Text="Add and Link" Width="171px" />
+            <asp:Button ID="Button1" runat="server" Onclick= "linkpub" style="margin-left: 1185px" Text="Link" Width="171px" />
                    <asp:Button ID="Button2" runat="server" style="margin-left: 1212px; margin-bottom: 2px;" OnClick="Backbutton" Text="Back" Width="129px" />
 
         </p>
