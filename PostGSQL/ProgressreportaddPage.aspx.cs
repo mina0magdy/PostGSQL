@@ -92,7 +92,7 @@ namespace PostGSQL
                     catch (Exception ex)
                     {
 
-                        Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                        Response.Write("<script>alert('Date must be written in dd/mm/yyyy format');</script>");
                         return;
                     }
                     AddProgressReport.Parameters.Add(new SqlParameter("@thesisSerialNo", SqlDbType.Int)).Value = serialno;
@@ -111,7 +111,7 @@ namespace PostGSQL
                     catch (Exception ex)
                     {
 
-                        Response.Write("<script>alert('Date must be written in dd//yyyy format');</script>");
+                        Response.Write("<script>alert('Date must be written in dd/mm/yyyy format');</script>");
                         return;
                     }
                     conn.Close();
