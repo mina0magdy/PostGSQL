@@ -16,8 +16,12 @@ namespace PostGSQL
         {
 
         }
+        protected void Backbutton(object sender, EventArgs e)
+        {
 
-        protected void Register(object sender, EventArgs e)
+            Response.Redirect("loginPage.aspx");
+        }
+            protected void Register(object sender, EventArgs e)
         {
             String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
 
@@ -33,28 +37,39 @@ namespace PostGSQL
             String Ggucian = gucselect.SelectedItem.Value;
             String types = type.SelectedItem.Text;
             Boolean GUCBit;
-            if (Ggucian == "1")
-                GUCBit = true;
+            if (firstname == "" || lastname == "" || mail == "" || pass == "" || ffaculty == "" || aaddress == "" || Ggucian == "" || types == "")
+            {
+                textMessage.Text = "You need to fill all fields";
+                messagePanel.Style["text-align"] = "center";
+            }
             else
-                GUCBit = false;
+            {
 
-            SqlCommand StudentRegister = new SqlCommand("StudentRegister", conn);
-            StudentRegister.CommandType = CommandType.StoredProcedure;
 
-            StudentRegister.Parameters.Add(new SqlParameter("@first_name", SqlDbType.VarChar)).Value = firstname;
-            StudentRegister.Parameters.Add(new SqlParameter("@last_name", SqlDbType.VarChar)).Value = lastname;
-            StudentRegister.Parameters.Add(new SqlParameter("@password", SqlDbType.VarChar)).Value = pass;
-            StudentRegister.Parameters.Add(new SqlParameter("@faculty", SqlDbType.VarChar)).Value = ffaculty;
-            StudentRegister.Parameters.Add(new SqlParameter("@Gucian", SqlDbType.Bit)).Value = GUCBit;
-            StudentRegister.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar)).Value = mail;
-            StudentRegister.Parameters.Add(new SqlParameter("@address", SqlDbType.VarChar)).Value = aaddress;
-            StudentRegister.Parameters.Add(new SqlParameter("@type", SqlDbType.VarChar)).Value = types;
+                if (Ggucian == "1")
+                    GUCBit = true;
+                else
+                    GUCBit = false;
 
-            conn.Open();
-            StudentRegister.ExecuteNonQuery();
-            conn.Close();
+                SqlCommand StudentRegister = new SqlCommand("StudentRegister", conn);
+                StudentRegister.CommandType = CommandType.StoredProcedure;
 
-            Response.Redirect("loginPage.aspx");
+                StudentRegister.Parameters.Add(new SqlParameter("@first_name", SqlDbType.VarChar)).Value = firstname;
+                StudentRegister.Parameters.Add(new SqlParameter("@last_name", SqlDbType.VarChar)).Value = lastname;
+                StudentRegister.Parameters.Add(new SqlParameter("@password", SqlDbType.VarChar)).Value = pass;
+                StudentRegister.Parameters.Add(new SqlParameter("@faculty", SqlDbType.VarChar)).Value = ffaculty;
+                StudentRegister.Parameters.Add(new SqlParameter("@Gucian", SqlDbType.Bit)).Value = GUCBit;
+                StudentRegister.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar)).Value = mail;
+                StudentRegister.Parameters.Add(new SqlParameter("@address", SqlDbType.VarChar)).Value = aaddress;
+                StudentRegister.Parameters.Add(new SqlParameter("@type", SqlDbType.VarChar)).Value = types;
+
+                conn.Open();
+                StudentRegister.ExecuteNonQuery();
+                conn.Close();
+
+                textMessage.Text = "User registered successfully";
+                messagePanel.Style["text-align"] = "center";
+            }
         }
     }
 }

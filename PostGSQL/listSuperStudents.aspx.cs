@@ -8,6 +8,7 @@ using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace PostGSQL
 {
     public partial class listSuperStudents : System.Web.UI.Page
@@ -15,34 +16,39 @@ namespace PostGSQL
         protected void Page_Load(object sender, EventArgs e)
         {
             String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
+
             SqlConnection conn = new SqlConnection(connStr);
-
-            SqlCommand listStudents = new SqlCommand("ViewSupStudentsYear", conn);
-            listStudents.CommandType = CommandType.StoredProcedure;
-
-            listStudents.Parameters.Add(new SqlParameter("@supervisorID", SqlDbType.Int)).Value = Session["user"];
+            SqlCommand ViewSupStudentsYear = new SqlCommand("ViewSupStudentsYear", conn);
+            ViewSupStudentsYear.CommandType = CommandType.StoredProcedure;
+            ViewSupStudentsYear.Parameters.Add(new SqlParameter("@supervisorID", SqlDbType.Int)).Value = Session["user"];
 
             conn.Open();
-            SqlDataReader rdr = listStudents.ExecuteReader(CommandBehavior.CloseConnection);
+            SqlDataReader rdr = ViewSupStudentsYear.ExecuteReader(CommandBehavior.CloseConnection);
+            DataTable table = new DataTable();
+            table.Columns.Add("Name");
+            table.Columns.Add("Years spent on Thesis");
+
             while (rdr.Read())
             {
-                String fullName = rdr.GetString(rdr.GetOrdinal("Student Name"));
-                int years = rdr.GetInt32(rdr.GetOrdinal("Thesis Years"));
+                DataRow dataRow = table.NewRow();
+                String sName = rdr.GetString(rdr.GetOrdinal("Student Name"));
+                int thY = rdr.GetInt32(rdr.GetOrdinal("Thesis Years"));
+                dataRow["Name"] = sName;
+                dataRow["Years spent on Thesis"] = thY;
+                table.Rows.Add(dataRow);
 
-                Label name = new Label();
-                name.Text = "Name: " + fullName;
 
-                Label yearsSpent = new Label();
-                yearsSpent.Text = "Years Spent: " + years;
 
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(name);
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(yearsSpent);
-                form1.Controls.Add(new LiteralControl("<br />"));
-                form1.Controls.Add(new LiteralControl("<br />"));
+
 
             }
+            GridView1.DataSource = table;
+            GridView1.DataBind();
+
+
+
+
+
         }
     }
 }

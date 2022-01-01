@@ -12,6 +12,33 @@ namespace PostGSQL
 {
     public partial class ThesisPage : System.Web.UI.Page
     {
+        protected void Backbutton(object sender, EventArgs e)
+        {
+            String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
+
+            SqlConnection conn = new SqlConnection(connStr);
+
+            SqlCommand getType = new SqlCommand("GetType", conn);
+            getType.CommandType = CommandType.StoredProcedure;
+
+            getType.Parameters.Add(new SqlParameter("@id", SqlDbType.Int)).Value = Session["user"];
+
+            SqlParameter type = getType.Parameters.Add("@type", SqlDbType.Int);
+            type.Direction = System.Data.ParameterDirection.Output;
+
+            conn.Open();
+            getType.ExecuteNonQuery();
+            conn.Close();
+
+            if (type.Value.ToString() == "1")
+            {
+                Response.Redirect("loggedGUCian.aspx");
+            }
+            if (type.Value.ToString() == "2")
+            {
+                Response.Redirect("loggedNonGUCian.aspx");
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();

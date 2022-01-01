@@ -29,9 +29,31 @@ namespace PostGSQL
 
             updateExtensions.Parameters.Add(new SqlParameter("@ThesisSerialNo", SqlDbType.Int)).Value = SSN;
 
+            SqlCommand registeredThesis = new SqlCommand("isThesisExist", conn);
+            registeredThesis.CommandType = CommandType.StoredProcedure;
+
+            registeredThesis.Parameters.Add(new SqlParameter("@SSN", SqlDbType.Int)).Value = SSN;
+
+            SqlParameter exist = registeredThesis.Parameters.Add("@exist", SqlDbType.Bit);
+            exist.Direction = System.Data.ParameterDirection.Output;
+
+
+
             conn.Open();
-            updateExtensions.ExecuteNonQuery();
+            registeredThesis.ExecuteNonQuery();
             conn.Close();
+
+            if(exist.Value.ToString() == "False")
+            {
+                Response.Write("<script>alert('Thesis is not registered');</script>");
+            }
+            else
+            {
+                Response.Write("Number of Extensions updated successfully");
+                conn.Open();
+                updateExtensions.ExecuteNonQuery();
+                conn.Close();
+            }
         }
     }
 }

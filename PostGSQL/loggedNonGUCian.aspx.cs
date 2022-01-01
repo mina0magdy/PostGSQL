@@ -30,10 +30,12 @@ namespace PostGSQL
             addMobile.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = Session["user"];
             addMobile.Parameters.Add(new SqlParameter("@mobile_number", SqlDbType.VarChar)).Value = mobilez;
 
+            textMessage.Text = "Mobile number added";
+            messagePanel.Style["text-align"] = "center";
             conn.Open();
             addMobile.ExecuteNonQuery();
             conn.Close();
-            Response.Redirect("loggedNonGUCian.aspx");
+  
         }
     }
 }

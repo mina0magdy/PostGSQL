@@ -8,12 +8,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+       <h1>Add Defense</h1>
+
+        
         <p>
             GUCian:</p>
         <p>
-            <asp:RadioButtonList ID="isGUCian" runat="server" required ="true">
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server" required ="true">
                 <asp:ListItem Value ="1" Selected ="True">Yes</asp:ListItem>
                 <asp:ListItem Value ="0">No</asp:ListItem>
             </asp:RadioButtonList>
@@ -25,11 +26,35 @@
         </p>
         <p>
             Date:
-            <asp:TextBox ID="dateDefense" runat="server" placeHolder ="dd/mm/yyyy" required ="true"></asp:TextBox>
+            <asp:TextBox ID="dateDefense" runat="server" placeHolder ="dd/mm/yyyy"   autocomplete="off"  required ="true"></asp:TextBox>
+               <!-- Bootstrap -->
+    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+   
+    <!-- Bootstrap -->
+    <!-- Bootstrap DatePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"
+        type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"
+        type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=dateDefense]').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: "dd/mm/yyyy",
+                language: "tr"
+            });
+        });
+    </script>
+            
+    
+            
         </p>
         <p>
-            Host:
-            <asp:TextBox ID="defenseHost" runat="server" required ="true"></asp:TextBox>
+            location:
+            <asp:TextBox ID="host" runat="server" required ="true"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="addButton" runat="server" Text="Add" OnClick="addButton_Click" />
