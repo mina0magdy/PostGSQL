@@ -11,7 +11,7 @@ namespace PostGSQL
 {
 
 
-    public partial class thesisSearchResults
+    public partial class examinerViewAllTheses
     {
 
         /// <summary>

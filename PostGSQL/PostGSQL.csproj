@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PostGSQL</RootNamespace>
     <AssemblyName>PostGSQL</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44315</IISExpressSSLPort>
@@ -111,8 +111,10 @@
     <Content Include="editSupervisorProfile.aspx" />
     <Content Include="evaluatePR.aspx" />
     <Content Include="examinerAddComment.aspx" />
+    <Content Include="examinerAddGrade.aspx" />
     <Content Include="examinerEditProfile.aspx" />
     <Content Include="examinerRegistration.aspx" />
+    <Content Include="examinerViewAllTheses.aspx" />
     <Content Include="issueInstallments.aspx" />
     <Content Include="issuePayment.aspx" />
     <Content Include="listPublications.aspx" />
@@ -198,6 +200,13 @@
     <Compile Include="examinerAddComment.aspx.designer.cs">
       <DependentUpon>examinerAddComment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="examinerAddGrade.aspx.cs">
+      <DependentUpon>examinerAddGrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examinerAddGrade.aspx.designer.cs">
+      <DependentUpon>examinerAddGrade.aspx</DependentUpon>
+    </Compile>
     <Compile Include="examinerEditProfile.aspx.cs">
       <DependentUpon>examinerEditProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -211,6 +220,13 @@
     </Compile>
     <Compile Include="examinerRegistration.aspx.designer.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examinerViewAllTheses.aspx.cs">
+      <DependentUpon>examinerViewAllTheses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examinerViewAllTheses.aspx.designer.cs">
+      <DependentUpon>examinerViewAllTheses.aspx</DependentUpon>
     </Compile>
     <Compile Include="issueInstallments.aspx.cs">
       <DependentUpon>issueInstallments.aspx</DependentUpon>

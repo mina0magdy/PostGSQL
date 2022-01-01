@@ -26,32 +26,45 @@ namespace PostGSQL
             String name = newName.Text;
             String field = newFieldOfWork.Text;
 
+            if (name == "" | field == "")
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('please fill the required data');", true);
 
-            SqlCommand editName = new SqlCommand("editExaminerName1", conn);
-            editName.CommandType = System.Data.CommandType.StoredProcedure;
+            }
+            else
+            {
 
-            SqlCommand editField = new SqlCommand("editExaminerFieldOfWork1", conn);
-            editField.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlCommand editName = new SqlCommand("editExaminerName1", conn);
+                editName.CommandType = System.Data.CommandType.StoredProcedure;
 
-            editName.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.Int)).Value = Session["user"];
-            editName.Parameters.Add(new SqlParameter("@newName", System.Data.SqlDbType.VarChar)).Value = name;
+                SqlCommand editField = new SqlCommand("editExaminerFieldOfWork1", conn);
+                editField.CommandType = System.Data.CommandType.StoredProcedure;
 
-            editField.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.Int)).Value = Session["user"];
-            editField.Parameters.Add(new SqlParameter("@newFieldOfWork", System.Data.SqlDbType.VarChar)).Value = field;
+                editName.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.Int)).Value = Session["user"];
+                editName.Parameters.Add(new SqlParameter("@newName", System.Data.SqlDbType.VarChar)).Value = name;
 
-            conn.Open();
-            editField.ExecuteNonQuery();
-            conn.Close();
+                editField.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.Int)).Value = Session["user"];
+                editField.Parameters.Add(new SqlParameter("@newFieldOfWork", System.Data.SqlDbType.VarChar)).Value = field;
 
-            conn.Open();
-            editName.ExecuteNonQuery();
-            conn.Close();
-            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('profile has been edited successfully');",true);
-           
+                conn.Open();
+                editField.ExecuteNonQuery();
+                conn.Close();
+
+                conn.Open();
+                editName.ExecuteNonQuery();
+                conn.Close();
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('profile has been edited successfully');", true);
+
+            }
+        }
+
+        protected void backButton(object sender, EventArgs e)
+        {
+
+
+            Response.Redirect("loggedExaminer.aspx");
 
         }
 
-
-       
     }
 }
