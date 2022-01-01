@@ -12,23 +12,24 @@
         </div>
         <p>
             Thesis Serial Number:
-            <asp:TextBox ID="ThesisSSN" runat="server" required ="true"></asp:TextBox>
+            <asp:TextBox ID="ThesisSSN" runat="server"></asp:TextBox>
         </p>
         <p>
             Amount:
-            <asp:TextBox ID="Amount" runat="server" required ="true"></asp:TextBox>
+            <asp:TextBox ID="Amount" runat="server"></asp:TextBox>
         </p>
         <p>
             Number of Installments:
-            <asp:TextBox ID="noOfInstallmets" runat="server" required ="true"></asp:TextBox>
+            <asp:TextBox ID="noOfInstallmets" runat="server"></asp:TextBox>
         </p>
         <p>
             Fund Percentage:
-            <asp:TextBox ID="fundPercentage" runat="server" required ="true"></asp:TextBox>
+            <asp:TextBox ID="fundPercentage" runat="server"></asp:TextBox>
         </p>
         <p>
             <asp:Button ID="issuePaymentThesis" runat="server" Text="Issue Payment" OnClick="issuePayment_Click" />
         </p>
+        <asp:Button ID="back" runat="server" Text="back" OnClick="back_Click" />
     </form>
 </body>
 </html>

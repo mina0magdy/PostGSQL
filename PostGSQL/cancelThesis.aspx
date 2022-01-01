@@ -10,6 +10,11 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <p>
+            Thesis Serial Number:
+            <asp:TextBox ID="ThesisSN" runat="server" required ="true"></asp:TextBox>
+        </p>
+        <asp:Button ID="Cancel" runat="server" Text="Cancel" OnClick="cancelThesis_Click" />
     </form>
 </body>
 </html>
