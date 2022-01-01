@@ -25,6 +25,7 @@
     </style>
 </head>
 <body>
+    
     <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">Welcome</a>
@@ -49,11 +50,14 @@
         </p>
 
             <p>
-                <asp:TextBox ID="searchForThesis" runat="server"  type="search" placeholder="Search for a thesis" Height="45px" style=" left:28%; border-radius=8px;border:groove; display:inline" ></asp:TextBox>
-                <asp:Button ID="Button3" runat="server" Text="search for a thesis" Width="275px" class="btn btn-secondary btn-lg" OnClick="thesisSearch" style="margin-left:41.5%"/>
-                <asp:TextBox ID="TextBox1" runat="server"  type="search" placeholder="Search for a thesis" Height="45px" style=" left:28%; border-radius=8px;border:groove; display:inline" ></asp:TextBox>
-
+                <asp:TextBox ID="searchForThesis" runat="server"  type="search" placeholder="Search for a thesis" Height="45px" style="position:absolute; left:28%; border-radius=8px;border:groove" ></asp:TextBox>
+                <asp:Button ID="Button3" runat="server" Text="search for a thesis" Width="275px" class="btn btn-secondary btn-lg" OnClick="thesisSearch" style="margin-left:42%"/>
             </p>
+        
+        
+
       </form>  
+    
+    
     </body>
 </html>
