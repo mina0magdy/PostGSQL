@@ -13,12 +13,12 @@ namespace PostGSQL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
+            
             if (Session["user"] == null)
             {
                 Response.Redirect("loginPage.aspx");
             }
-            */
+            
         }
 
 
@@ -40,6 +40,8 @@ namespace PostGSQL
             String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
             SqlConnection conn = new SqlConnection(connStr);
 
+            Response.Redirect("examinerViewAllTheses.aspx");
+
         }
 
 
@@ -58,6 +60,8 @@ namespace PostGSQL
         {
             String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
             SqlConnection conn = new SqlConnection(connStr);
+
+            Response.Redirect("examinerAddGrade.aspx");
 
         }
 
@@ -95,6 +99,15 @@ namespace PostGSQL
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('thesis not found');", true);
             }
+
+        }
+
+
+        protected void backButton(object sender, EventArgs e)
+        {
+            
+
+            Response.Redirect("loginPage.aspx");
 
         }
 

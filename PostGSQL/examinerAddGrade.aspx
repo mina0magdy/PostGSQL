@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="examinerAddComment.aspx.cs" Inherits="PostGSQL.examinerAddComment" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="examinerAddGrade.aspx.cs" Inherits="PostGSQL.examinerAddGrade" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Add comment</title>
-        <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Add grade</title>
+<link href="Content/bootstrap.min.css" rel="stylesheet" />
     <style>
         body{
             background-image:url('/public/1.jpg');
@@ -28,10 +28,10 @@
             <br />
             <br />
                 
-                &nbsp;<asp:TextBox ID="thesisComment" runat="server" Height="30px"  placeholder="Enter your comment" style="margin-left: 43% " Width="200px"></asp:TextBox>
+                &nbsp;<asp:TextBox ID="thesisGrade"  runat="server" Height="30px"  placeholder="Enter a grade" style="margin-left: 43% " Width="200px"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="Button5" runat="server" Text=" Add comment" Width="275px" class="btn btn-secondary btn-lg" OnClick="addComment" style="margin-left:41%"/>
+            <asp:Button ID="Button5" runat="server" Text=" Add grade" Width="275px" class="btn btn-secondary btn-lg" OnClick="addGrade" style="margin-left:41%"/>
             <br />
             
 

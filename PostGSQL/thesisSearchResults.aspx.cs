@@ -39,5 +39,13 @@ namespace PostGSQL
                 conn.Close();
             
         }
+
+        protected void backButton(object sender, EventArgs e)
+        {
+
+
+            Response.Redirect("loggedExaminer.aspx");
+
+        }
     }
 }

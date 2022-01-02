@@ -33,6 +33,11 @@
 </nav>
     
     <form runat="server" id="form1">
+
+        <p>
+        <asp:Button ID="Button6" runat="server" Text="Back"   class="btn btn-secondary btn-lg" OnClick="backButton" Width="150px" style="position:absolute; top:10px;left:10px"/>
+            </p>
+        
         <p>
         <asp:Button ID="Button1" runat="server" Text="Edit profile"   class="btn btn-secondary btn-lg" OnClick="editProfile" Width="275px" style="margin-left:42%"/>
             </p>

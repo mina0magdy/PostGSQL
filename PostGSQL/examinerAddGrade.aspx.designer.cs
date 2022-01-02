@@ -11,7 +11,7 @@ namespace PostGSQL
 {
 
 
-    public partial class thesisSearchResults
+    public partial class examinerAddGrade
     {
 
         /// <summary>
@@ -33,12 +33,30 @@ namespace PostGSQL
         protected global::System.Web.UI.WebControls.Button Button6;
 
         /// <summary>
-        /// GridView1 control.
+        /// thesisSerial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.TextBox thesisSerial;
+
+        /// <summary>
+        /// thesisGrade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox thesisGrade;
+
+        /// <summary>
+        /// Button5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button5;
     }
 }

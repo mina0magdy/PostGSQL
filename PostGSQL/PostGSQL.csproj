@@ -45,6 +45,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -55,6 +58,24 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -90,8 +111,10 @@
     <Content Include="editSupervisorProfile.aspx" />
     <Content Include="evaluatePR.aspx" />
     <Content Include="examinerAddComment.aspx" />
+    <Content Include="examinerAddGrade.aspx" />
     <Content Include="examinerEditProfile.aspx" />
     <Content Include="examinerRegistration.aspx" />
+    <Content Include="examinerViewAllTheses.aspx" />
     <Content Include="issueInstallments.aspx" />
     <Content Include="issuePayment.aspx" />
     <Content Include="listPublications.aspx" />
@@ -107,6 +130,11 @@
     <Content Include="ProgressreportaddPage.aspx" />
     <Content Include="ProgressreportfillPage.aspx" />
     <Content Include="publicationPage.aspx" />
+    <Content Include="public\1.jpg" />
+    <Content Include="public\2.jpg" />
+    <Content Include="public\ex.jpg" />
+    <Content Include="public\exam.jpg" />
+    <Content Include="public\examiner.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -172,6 +200,13 @@
     <Compile Include="examinerAddComment.aspx.designer.cs">
       <DependentUpon>examinerAddComment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="examinerAddGrade.aspx.cs">
+      <DependentUpon>examinerAddGrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examinerAddGrade.aspx.designer.cs">
+      <DependentUpon>examinerAddGrade.aspx</DependentUpon>
+    </Compile>
     <Compile Include="examinerEditProfile.aspx.cs">
       <DependentUpon>examinerEditProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,6 +220,13 @@
     </Compile>
     <Compile Include="examinerRegistration.aspx.designer.cs">
       <DependentUpon>examinerRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examinerViewAllTheses.aspx.cs">
+      <DependentUpon>examinerViewAllTheses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examinerViewAllTheses.aspx.designer.cs">
+      <DependentUpon>examinerViewAllTheses.aspx</DependentUpon>
     </Compile>
     <Compile Include="issueInstallments.aspx.cs">
       <DependentUpon>issueInstallments.aspx</DependentUpon>
@@ -373,6 +415,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

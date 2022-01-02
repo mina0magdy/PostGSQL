@@ -125,13 +125,17 @@ h1, input {
     </style>
 </head>  
 <body>
+    
   <div class="container">
     <div id="logbox">
       <form  runat="server" >
+          <p>
+        <asp:Button ID="Button1" runat="server" Text="Back"   class="btn btn-secondary btn-lg" OnClick="backButton" Width="150px" style="position:absolute; top:10px;left:10px"/>
+            </p>
         <h1 style="margin-top:50px">Edit profile</h1>
-        <asp:Textbox ID="newName"  runat="server" class="input pass"  type="text" placeholder="What's your username?"  autofocus="autofocus" CausesValidation="true"  ValidationGroup="first" required="true"></asp:Textbox>
+        <asp:Textbox ID="newName"  runat="server" class="input pass"  type="text" placeholder="What's your username?"  autofocus="autofocus" CausesValidation="true"  ValidationGroup="first" ></asp:Textbox>
         
-        <asp:TextBox ID="newFieldOfWork" runat="server" class="input pass"  type="text" placeholder="What's your field of work?" required="true" CausesValidation="true" ValidationGroup="second"></asp:TextBox>
+        <asp:TextBox ID="newFieldOfWork" runat="server" class="input pass"  type="text" placeholder="What's your field of work?"  CausesValidation="true" ValidationGroup="second"></asp:TextBox>
         <asp:Button runat="server" class="inputButton" Text="submit" type="submit" value="submit" onclick="editProfile" ValidationGroup="second"/>
       </form>
 
