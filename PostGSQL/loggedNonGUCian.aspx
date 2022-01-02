@@ -31,6 +31,8 @@
           <br />
         <br />
         <asp:HyperLink ID="HyperLink6" runat="server" href="publicationPage.aspx">Add and Link publication</asp:HyperLink>
+                 <asp:Button ID="Button2" runat="server" style="margin-left: 1228px; margin-bottom: 2px;" OnClick="Backbutton" Text="Back" Width="139px" />
+
         </p>
         <p>
             &nbsp;</p>

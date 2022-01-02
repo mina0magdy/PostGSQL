@@ -16,6 +16,10 @@ namespace PostGSQL
         {
 
         }
+        protected void Backbutton(object sender, EventArgs e)
+        {
+            Response.Redirect("loginPage.aspx");
+        }
         protected void Mobile(object sender, EventArgs e)
         {
             String connStr = WebConfigurationManager.ConnectionStrings["PostGSQL"].ToString();
@@ -23,19 +27,27 @@ namespace PostGSQL
             SqlConnection conn = new SqlConnection(connStr);
 
             String mobilez = mobile.Text;
+            if (mobilez == "")
+            {
 
-            SqlCommand addMobile = new SqlCommand("addMobile", conn);
-            addMobile.CommandType = CommandType.StoredProcedure;
+                textMessage.Text = "You need to enter a phone number in order to add";
+                messagePanel.Style["text-align"] = "center";
+            }
+            else
+            {
+                SqlCommand addMobile = new SqlCommand("addMobile", conn);
+                addMobile.CommandType = CommandType.StoredProcedure;
 
-            addMobile.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = Session["user"];
-            addMobile.Parameters.Add(new SqlParameter("@mobile_number", SqlDbType.VarChar)).Value = mobilez;
+                addMobile.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = Session["user"];
+                addMobile.Parameters.Add(new SqlParameter("@mobile_number", SqlDbType.VarChar)).Value = mobilez;
 
-            textMessage.Text = "Mobile number added";
-            messagePanel.Style["text-align"] = "center";
-            conn.Open();
-            addMobile.ExecuteNonQuery();
-            conn.Close();
-  
+                textMessage.Text = "Mobile number added";
+                messagePanel.Style["text-align"] = "center";
+                conn.Open();
+                addMobile.ExecuteNonQuery();
+                conn.Close();
+
+            }
         }
     }
 }

@@ -99,8 +99,7 @@ namespace PostGSQL
 
 
 
-                    textMessage.Text = "Report added successfully";
-                    messagePanel.Style["text-align"] = "center";
+                   
 
                     conn.Open();
                     try
@@ -115,7 +114,8 @@ namespace PostGSQL
                         return;
                     }
                     conn.Close();
-
+                    textMessage.Text = "Report added successfully";
+                    messagePanel.Style["text-align"] = "center";
                 }
             }
         }

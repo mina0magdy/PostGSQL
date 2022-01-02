@@ -18,7 +18,10 @@ namespace PostGSQL
         {
             //    id = (int)Session["user"];
         }
- 
+        protected void Backbutton(object sender, EventArgs e)
+        {
+            Response.Redirect("loginPage.aspx");
+        }
 
         protected void Mobile(object sender, EventArgs e)
         {
@@ -28,18 +31,27 @@ namespace PostGSQL
 
             String mobilez = mobile.Text;
 
-            SqlCommand addMobile = new SqlCommand("addMobile", conn);
-            addMobile.CommandType = CommandType.StoredProcedure;
+            if (mobilez == "")
+            {
 
-            addMobile.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = Session["user"];
-            addMobile.Parameters.Add(new SqlParameter("@mobile_number", SqlDbType.VarChar)).Value = mobilez;
+                textMessage.Text = "You need to enter a phone number in order to add";
+                messagePanel.Style["text-align"] = "center";
+            }
+            else
+            {
+                SqlCommand addMobile = new SqlCommand("addMobile", conn);
+                addMobile.CommandType = CommandType.StoredProcedure;
 
-            textMessage.Text = "Mobile number added";
-            messagePanel.Style["text-align"] = "center";
-            conn.Open();
-            addMobile.ExecuteNonQuery();
-            conn.Close();
-           
+                addMobile.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = Session["user"];
+                addMobile.Parameters.Add(new SqlParameter("@mobile_number", SqlDbType.VarChar)).Value = mobilez;
+
+                textMessage.Text = "Mobile number added";
+                messagePanel.Style["text-align"] = "center";
+                conn.Open();
+                addMobile.ExecuteNonQuery();
+                conn.Close();
+
+            }
         }
     }
 }
