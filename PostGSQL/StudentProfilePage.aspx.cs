@@ -73,7 +73,7 @@ namespace PostGSQL
                 String line2 = rdr.GetString(rdr.GetOrdinal("type"));
                 String line3 = rdr.GetString(rdr.GetOrdinal("faculty"));
                 String line4 = rdr.GetString(rdr.GetOrdinal("address"));
-                float line6 = rdr.GetFloat(rdr.GetOrdinal("GPA"));
+                String line6;
                 String line7;
 
                 Label label1 = new Label();
@@ -86,8 +86,7 @@ namespace PostGSQL
                 label6.Text = " Faculty: " + line3;
                 Label label4 = new Label();
                 label4.Text = " Address: " + line4;
-                Label label5 = new Label();
-                label5.Text = "GPA: " + line6;
+                
                 form1.Controls.Add(label1);
                 form1.Controls.Add(new LiteralControl("<br />"));
                 form1.Controls.Add(label2);
@@ -97,9 +96,19 @@ namespace PostGSQL
                 form1.Controls.Add(label6);
                 form1.Controls.Add(new LiteralControl("<br />"));
                 form1.Controls.Add(label4);
+                
+
+
+                if (rdr.IsDBNull(rdr.GetOrdinal("GPA")))
+                    line6 = string.Empty;
+                else
+                {
+                    line6 = rdr.GetFloat(rdr.GetOrdinal("GPA")) + "";
+                }
+                Label label5 = new Label();
+                label5.Text = "GPA: " + line6;
                 form1.Controls.Add(new LiteralControl("<br />"));
                 form1.Controls.Add(label5);
-
                 if (type.Value.ToString() == "1")
                 {
                     if (rdr.IsDBNull(rdr.GetOrdinal("undergradID")))

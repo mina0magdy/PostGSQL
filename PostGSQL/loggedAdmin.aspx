@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <h1>Hello Admin</h1>
             <asp:HyperLink ID="listSupervisors" href ="listSupervisors.aspx" runat="server">List all supervisors</asp:HyperLink>
         <p>
             <asp:HyperLink ID="listTheses" href ="listTheses.aspx" runat="server">List All Theses</asp:HyperLink>

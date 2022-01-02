@@ -18,7 +18,7 @@ namespace PostGSQL
             SqlConnection conn = new SqlConnection(connStr);
 
 
-            SqlCommand thesisSearch = new SqlCommand("searchForThesisV2", conn);
+            SqlCommand thesisSearch = new SqlCommand("searchForThesisV3", conn);
             thesisSearch.CommandType = System.Data.CommandType.StoredProcedure;
 
             thesisSearch.Parameters.Add(new SqlParameter("@search", System.Data.SqlDbType.VarChar)).Value=Session["search"];

@@ -12,7 +12,7 @@
         </div>
         <p>
             Payment ID:
-            <asp:TextBox ID="paymentID" runat="server"></asp:TextBox>
+            <asp:TextBox ID="paymentID" runat="server" type ="number"></asp:TextBox>
         </p>
         <p>
             Installments Start Date:
