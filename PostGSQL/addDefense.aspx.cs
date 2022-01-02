@@ -26,7 +26,7 @@ namespace PostGSQL
 
             SqlConnection conn = new SqlConnection(connStr);
 
-            SqlCommand checkThesis = new SqlCommand("checkThesis", conn);
+            SqlCommand checkThesis = new SqlCommand("checkThesisV4", conn);
             checkThesis.CommandType = CommandType.StoredProcedure;
             checkThesis.Parameters.Add(new SqlParameter("@thesisNumber", SqlDbType.Int)).Value = ThesisSSN.Text;
             SqlParameter sucess = checkThesis.Parameters.Add("@successBit", SqlDbType.Bit);
