@@ -38,11 +38,11 @@
             <h2>Link publication</h2>
             &nbsp;<p>
           Thesis serialno:<br />  
-        <asp:TextBox ID="serialno" placeholder="xxxx" runat="server" ></asp:TextBox>
+        <asp:TextBox ID="serialno" type="number" placeholder="xxxx" runat="server" ></asp:TextBox>
            
             <p>
                 PubID:<br />  
-        <asp:TextBox ID="pubid" placeholder="xxxx" runat="server" ></asp:TextBox>
+        <asp:TextBox ID="pubid" type="number" placeholder="xxxx" runat="server" ></asp:TextBox>
                 &nbsp;<asp:Panel ID="messagePanel" runat="server">
             <asp:Literal ID="textMessage" runat="server"></asp:Literal>
         </asp:Panel>

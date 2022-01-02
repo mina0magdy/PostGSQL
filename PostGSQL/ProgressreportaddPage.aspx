@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <h1>Add Progress Report</h1>
-           Thesis serialno:<br /><asp:TextBox ID="Thesis" Type="number" runat="server" placeholder="xxxx" style="margin-left: 2px" Width="136px"></asp:TextBox>
+           Thesis serialno:<br /><asp:TextBox ID="Thesis" Type="number" runat="server"  placeholder="xxxx" style="margin-left: 2px" Width="136px"></asp:TextBox>
            
         
         <p>

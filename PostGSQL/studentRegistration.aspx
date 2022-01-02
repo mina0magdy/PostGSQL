@@ -14,7 +14,7 @@
         Student Registration:</p>
         <p>
             First Name:
-            <asp:TextBox ID="firstName" runat="server"  placeholder="enter your first name"></asp:TextBox>
+            <asp:TextBox ID="firstName" runat="server"   placeholder="enter your first name"></asp:TextBox>
         </p>
         <p>
             Last Name:
